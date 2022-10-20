@@ -13,9 +13,12 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+        float dirX = Input.GetAxis("Horizontal");
+        rigidBody.velocity = new Vector2(dirX * 7f, rigidBody.velocity.y);
+
         if (Input.GetButtonDown("Jump"))
         {
-            GetComponent<Rigidbody2D>().velocity = new Vector3(0, 7, 0); 
+            GetComponent<Rigidbody2D>().velocity = new Vector3(0, 7f, 0); 
         }
     }
 }
