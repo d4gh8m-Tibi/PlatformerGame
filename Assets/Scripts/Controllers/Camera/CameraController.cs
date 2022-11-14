@@ -6,11 +6,15 @@ public class CameraController : MonoBehaviour
 {
     private float zoomSize = 5;
 
-    public Transform target;
-    public Vector3 Offset;
-    public bool IsSmooth;
+    [SerializeField]
+    private Transform Target;
+    [SerializeField]
+    private Vector3 Offset;
+    [SerializeField]
+    private bool IsSmooth;
+    [SerializeField]
     [Range(1, 10)]
-    public float SmoothFactor;
+    private float SmoothFactor;
 
 
 
@@ -27,7 +31,7 @@ public class CameraController : MonoBehaviour
 
     private void FollowLogic()
     {
-        Vector3 targetPosition = target.position + Offset;
+        Vector3 targetPosition = Target.position + Offset;
         if (IsSmooth)
         {
             Vector3 smoothPosition = Vector3.Lerp(transform.position, targetPosition, SmoothFactor * Time.fixedDeltaTime);
