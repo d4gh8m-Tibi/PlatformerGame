@@ -101,6 +101,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeed: 7
   jumpForce: 7
+  jumpableGround:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!50 &5282830661114686408
 Rigidbody2D:
   serializedVersion: 4

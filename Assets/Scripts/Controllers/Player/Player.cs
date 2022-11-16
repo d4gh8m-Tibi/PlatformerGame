@@ -10,20 +10,17 @@ public class Player : MonoBehaviour
     private float movementSpeed = 7f;
     [SerializeField]
     private float jumpForce = 7f;
+    [SerializeField]
+    private LayerMask jumpableGround;
 
+    private BoxCollider2D coll;
     private float jumpCooldown = 1.3f;
     private float jumpTimer = 0.0f;
-
     private PlayerInput playerInput;
-
-    private bool canJump
-    {
-        get { return jumpTimer > jumpCooldown; }
-    }
-
     private void Start()
     {
         SetRigidBody(GetComponent<Rigidbody2D>());
+        coll = GetComponent<BoxCollider2D>();
     }
 
     private void Awake()
@@ -71,19 +68,20 @@ public class Player : MonoBehaviour
 
     public void Jump()
     {
-        if(Input.GetButtonDown("Jump") && canJump)
+        if(Input.GetButtonDown("Jump") && isGrounded())
         {
             GetComponent<Rigidbody2D>().velocity = new Vector3(0, jumpForce, 0);
             jumpTimer = 0.0f;
-        }
-        else if(!canJump)
-        {
-            jumpTimer += Time.deltaTime;
         }
     }
 
     public void SetRigidBody(Rigidbody2D rigidbody)
     {
         this.rigidBody = rigidbody;
+    }
+
+    private bool isGrounded()
+    {
+        return Physics2D.BoxCast(coll.bounds.center, coll.bounds.size, 0f, Vector2.down, .1f, jumpableGround);
     }
 }
