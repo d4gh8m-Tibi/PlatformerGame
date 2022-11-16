@@ -30,24 +30,22 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        Move(Input.GetAxis("Horizontal"));
-
-
-        DoSomething(playerInput.Action);
-
+        ExecutePlayerInputs(playerInput.Actions);
     }
 
-    private void DoSomething(PlayerAction action)
+    private void ExecutePlayerInputs(List<PlayerAction> actions)
     {
-        if(action == PlayerAction.Jump)
+        if(actions.Contains(PlayerAction.Jump))
         {
             Jump();
+            actions.Remove(PlayerAction.Jump);
         }
-        else if(action == PlayerAction.MoveHorizontal)
+        else if(actions.Contains(PlayerAction.MoveHorizontal))
         {
             Move(playerInput.HorizontalInput);
+            actions.Remove(PlayerAction.MoveHorizontal);
         }
-        else if(action == PlayerAction.Menu)
+        else if(actions.Contains(PlayerAction.Menu))
         {
             //openmenu
         }
@@ -57,7 +55,7 @@ public class Player : MonoBehaviour
     {
         if (directionInput != 0)
         {
-            var dirX = Input.GetAxis("Horizontal") > 0 ? 0.5f : -0.5f;
+            var dirX = directionInput > 0 ? 0.5f : -0.5f;
             rigidBody.velocity = new Vector2(dirX * 7f, rigidBody.velocity.y);
         }
         else
