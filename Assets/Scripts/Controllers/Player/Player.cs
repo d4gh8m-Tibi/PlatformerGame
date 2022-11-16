@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class Player : MonoBehaviour
 {
     private Rigidbody2D rigidBody;
     
@@ -14,6 +14,8 @@ public class PlayerMovement : MonoBehaviour
     private float jumpCooldown = 1.3f;
     private float jumpTimer = 0.0f;
 
+    private PlayerInput playerInput;
+
     private bool canJump
     {
         get { return jumpTimer > jumpCooldown; }
@@ -24,11 +26,34 @@ public class PlayerMovement : MonoBehaviour
         SetRigidBody(GetComponent<Rigidbody2D>());
     }
 
+    private void Awake()
+    {
+        playerInput = PlayerInput.Instance;
+    }
+
     private void Update()
     {
         Move(Input.GetAxis("Horizontal"));
 
-        Jump();
+
+        DoSomething(playerInput.Action);
+
+    }
+
+    private void DoSomething(PlayerAction action)
+    {
+        if(action == PlayerAction.Jump)
+        {
+            Jump();
+        }
+        else if(action == PlayerAction.MoveHorizontal)
+        {
+            Move(playerInput.HorizontalInput);
+        }
+        else if(action == PlayerAction.Menu)
+        {
+            //openmenu
+        }
     }
 
     public void Move(float directionInput)

@@ -13,7 +13,7 @@ public class MovementTest
         new WaitForSeconds(2f);
         var gameObject = new GameObject();
         var rigidBody = gameObject.AddComponent<Rigidbody2D>();
-        var player = gameObject.AddComponent<PlayerMovement>();
+        var player = gameObject.AddComponent<Player>();
         player.SetRigidBody(rigidBody);
         var startPosition = player.transform.position;
 
