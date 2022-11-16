@@ -10,6 +10,7 @@ public class MovementTest
     [UnityTest]
     public IEnumerator Move()
     {
+        new WaitForSeconds(2f);
         var gameObject = new GameObject();
         var rigidBody = gameObject.AddComponent<Rigidbody2D>();
         var player = gameObject.AddComponent<PlayerMovement>();
@@ -18,8 +19,7 @@ public class MovementTest
 
         player.Move(0.1f);
 
-        yield return new WaitForSeconds(2f);
-        Debug.Log(player.transform.position.x + " | " + startPosition.x);
+        yield return new WaitForSeconds(5f);
         Assert.IsTrue(player.transform.position.x < startPosition.x);
     }
 }
