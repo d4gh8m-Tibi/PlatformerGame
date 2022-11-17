@@ -13,13 +13,16 @@ public class Player : MonoBehaviour
     [SerializeField]
     private LayerMask jumpableGround;
 
-    private BoxCollider2D collider;
+    private BoxCollider2D boxCollider2D;
     private PlayerInput playerInput;
+    private GameController gameController;
+
     private void Start()
     {
         SetRigidBody(GetComponent<Rigidbody2D>());
-        collider = GetComponent<BoxCollider2D>();
+        boxCollider2D = GetComponent<BoxCollider2D>();
         playerInput = PlayerInput.Instance;
+        gameController = GameController.instance;
     }
 
     private void Awake()
@@ -47,6 +50,8 @@ public class Player : MonoBehaviour
         else if(actions.Contains(PlayerAction.Menu))
         {
             //openmenu
+            gameController.SetGameSpeedForMenu();
+            actions.Remove(PlayerAction.Menu);
         }
     }
 
@@ -78,14 +83,14 @@ public class Player : MonoBehaviour
 
     public void SetCollider(BoxCollider2D boxCollider2D)
     {
-        collider = boxCollider2D;
+        this.boxCollider2D = boxCollider2D;
     }
 
     public bool IsGrounded
     {
         get
         {
-            return Physics2D.BoxCast(collider.bounds.center, collider.bounds.size, 0f, Vector2.down, .1f, jumpableGround);
+            return Physics2D.BoxCast(boxCollider2D.bounds.center, boxCollider2D.bounds.size, 0f, Vector2.down, .1f, jumpableGround);
         }        
     }
 }
