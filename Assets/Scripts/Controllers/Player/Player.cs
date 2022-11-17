@@ -21,11 +21,12 @@ public class Player : MonoBehaviour
     {
         SetRigidBody(GetComponent<Rigidbody2D>());
         coll = GetComponent<BoxCollider2D>();
+        playerInput = PlayerInput.Instance;
     }
 
     private void Awake()
     {
-        playerInput = PlayerInput.Instance;
+       
     }
 
     private void Update()
@@ -66,7 +67,7 @@ public class Player : MonoBehaviour
 
     public void Jump()
     {
-        if(Input.GetButtonDown("Jump") && isGrounded())
+        if(isGrounded())
         {
             GetComponent<Rigidbody2D>().velocity = new Vector3(0, jumpForce, 0);
             jumpTimer = 0.0f;

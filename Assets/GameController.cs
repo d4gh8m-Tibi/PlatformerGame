@@ -6,10 +6,11 @@ public class GameController : MonoBehaviour
 {
     // Start is called before the first frame update
     public static GameController instance;
-    [SerializeField]
+    
     private PlayerInput PlayerInput;
     private void Awake()
     {
         instance = this;
+        PlayerInput = new PlayerInput();
     }
 }
