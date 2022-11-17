@@ -7,10 +7,14 @@ env:
 
 jobs:
   testRunner:
-    name: Test all modes
+    name: Test in ${{ matrix.testMode }}
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
+      matrix:
+        testMode:
+          - EditMode
+          - PlayMode
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -30,6 +34,7 @@ jobs:
           git lfs pull
           git add .
           git reset --hard
+          
       - name: Restore Library cache
         uses: actions/cache@v2
         with:
@@ -38,15 +43,18 @@ jobs:
           restore-keys: |
             Library-test-project-
             Library-
+            
       - name: Run tests
         uses: game-ci/unity-test-runner@v2
         id: testRunner
         with:
-          testMode: all
+          testMode: ${{ matrix.testMode }}
+          checkName: ${{ matrix.testMode }} test results
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
           
       - uses: actions/upload-artifact@v2
         with:
-          name: Test results (all modes)
+          name: Test results (${{ matrix.testMode }})
           path: ${{ steps.testRunner.outputs.artifactsPath }}
 
   buildWindows:
