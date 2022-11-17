@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
     private BoxCollider2D boxCollider2D;
     private PlayerInput playerInput;
     private GameController gameController;
+    private int starCounter = 0;
 
     private void Start()
     {
@@ -92,5 +93,11 @@ public class Player : MonoBehaviour
         {
             return Physics2D.BoxCast(boxCollider2D.bounds.center, boxCollider2D.bounds.size, 0f, Vector2.down, .1f, jumpableGround);
         }        
+    }
+
+    public void IncrementStars()
+    {
+        starCounter++;
+        Debug.Log(starCounter);
     }
 }
