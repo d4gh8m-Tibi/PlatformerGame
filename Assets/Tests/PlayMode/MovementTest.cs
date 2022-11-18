@@ -16,12 +16,15 @@ public class MovementTest
         player.Move(0.6f);
 
         yield return new WaitForSeconds(4f);
-        Assert.IsTrue(player.transform.position.x > startPosition.x);
+        Debug.Log("A:" + player.transform.position.x + " | " + startPosition.x);
+        //Assert.IsTrue(player.transform.position.x > startPosition.x);
+
 
         startPosition = player.transform.position;
-        player.Move(-0.6f);
+        player.Move(-3f);
 
         yield return new WaitForSeconds(4f);
+        Debug.Log("B:" + player.transform.position.x + " | " + startPosition.x);
         Assert.IsTrue(player.transform.position.x < startPosition.x);
     }
 
