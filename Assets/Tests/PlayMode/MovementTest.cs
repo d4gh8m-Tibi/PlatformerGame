@@ -13,6 +13,7 @@ public class MovementTest
         var gameObject = new GameObject();
         var inputController = gameObject.AddComponent<PlayerInput>();
         var rigidBody = gameObject.AddComponent<Rigidbody2D>();
+        var animator = gameObject.AddComponent<Animator>();
         var player = gameObject.AddComponent<Player>();
         player.SetRigidBody(rigidBody);
 
@@ -35,7 +36,8 @@ public class MovementTest
         var gameObject = new GameObject();
         var boxCollider2D = gameObject.AddComponent<BoxCollider2D>();
         var inputController = gameObject.AddComponent<PlayerInput>();
-        var rigidBody = gameObject.AddComponent<Rigidbody2D>();        
+        var rigidBody = gameObject.AddComponent<Rigidbody2D>();
+        var animator = gameObject.AddComponent<Animator>();
         var player = gameObject.AddComponent<Player>();
         player.SetRigidBody(rigidBody);
         player.SetCollider(boxCollider2D);
