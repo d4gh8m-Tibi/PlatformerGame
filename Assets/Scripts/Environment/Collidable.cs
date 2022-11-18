@@ -16,7 +16,7 @@ public abstract class Collidable : MonoBehaviour
     protected virtual void Update()
     {
         boxCollider.OverlapCollider(filter, hits);
-        for(int i = 0; i< hits.Length; ++i)
+        for(int i = 0; i < hits.Length; ++i)
         {
             if(hits[i] == null)
             {

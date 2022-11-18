@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
@@ -13,16 +14,16 @@ public class GameController : MonoBehaviour
         playerInput = new PlayerInput();
     }
 
-    public bool IsRunning => Time.timeScale > 0;
+    public bool IsRunning => Time.timeScale > Constants.Game.GAMESPEEDSTOPPED;
 
     public void PauseGame()
     {
-        Time.timeScale = Constants.GAME.GAMESPEEDSTOPPED;
+        Time.timeScale = Constants.Game.GAMESPEEDSTOPPED;
     }
 
     public void ResumeGame()
     {
-        Time.timeScale = Constants.GAME.GAMESPEED;
+        Time.timeScale = Constants.Game.GAMESPEED;
     }
 
     public void SetGameSpeedForMenu()
@@ -35,5 +36,10 @@ public class GameController : MonoBehaviour
         {
             ResumeGame();
         }
+    }
+
+    public void FinishGame()
+    {
+        SceneManager.LoadScene(Constants.Scenes.MENU);
     }
 }
