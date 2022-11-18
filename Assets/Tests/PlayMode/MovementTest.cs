@@ -8,23 +8,27 @@ public class MovementTest
 {
 
     [UnityTest]
-    public IEnumerator Move()
+    public IEnumerator MoveRight()
     {
         Inits.InitPlayer(out Player player);
 
         Vector3 startPosition = player.transform.position;
-        player.Move(0.6f);
+        player.Move(3f);
 
         yield return new WaitForSeconds(4f);
-        Debug.Log("A:" + player.transform.position.x + " | " + startPosition.x);
-        //Assert.IsTrue(player.transform.position.x > startPosition.x);
+        Debug.Log("Player position:" + player.transform.position.x + " start position " + startPosition.x);
+        Assert.IsTrue(player.transform.position.x > startPosition.x);
+    }
 
-
-        startPosition = player.transform.position;
+    [UnityTest]
+    public IEnumerator MoveLeft()
+    {
+        Inits.InitPlayer(out Player player);
+        Vector3 startPosition = player.transform.position;
         player.Move(-3f);
 
         yield return new WaitForSeconds(4f);
-        Debug.Log("B:" + player.transform.position.x + " | " + startPosition.x);
+        Debug.Log("Player position:" + player.transform.position.x + " start position " + startPosition.x);
         Assert.IsTrue(player.transform.position.x < startPosition.x);
     }
 
