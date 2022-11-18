@@ -10,8 +10,13 @@ public class Star : Collectable
         {
             var player = coll.GetComponent<Player>();
             player.IncrementStars();
+            Destroy(gameObject);
         }
-        base.OnCollide(coll);
-        Destroy(gameObject);
+        base.OnCollide(coll);        
+    }
+
+    protected override void SetCollider(BoxCollider2D boxCollider)
+    {
+        base.SetCollider(boxCollider);
     }
 }

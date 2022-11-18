@@ -16,7 +16,8 @@ public class Player : MonoBehaviour
     private BoxCollider2D boxCollider2D;
     private PlayerInput playerInput;
     private GameController gameController;
-    private int starCounter = 0;
+    public int StarCounter { get; private set; } = 0;
+    
 
     private void Start()
     {
@@ -24,6 +25,7 @@ public class Player : MonoBehaviour
         boxCollider2D = GetComponent<BoxCollider2D>();
         playerInput = PlayerInput.Instance;
         gameController = GameController.instance;
+        boxCollider2D.tag = "Player";
     }
 
     private void Awake()
@@ -97,7 +99,7 @@ public class Player : MonoBehaviour
 
     public void IncrementStars()
     {
-        starCounter++;
-        Debug.Log(starCounter);
+        StarCounter++;
+        Debug.Log(StarCounter);
     }
 }

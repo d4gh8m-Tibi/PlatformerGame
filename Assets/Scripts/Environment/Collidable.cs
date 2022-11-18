@@ -28,4 +28,8 @@ public abstract class Collidable : MonoBehaviour
     }
 
     protected virtual void OnCollide(Collider2D coll) { }
+    protected virtual void SetCollider(BoxCollider2D boxCollider) 
+    {
+        this.boxCollider = boxCollider;
+    }
 }

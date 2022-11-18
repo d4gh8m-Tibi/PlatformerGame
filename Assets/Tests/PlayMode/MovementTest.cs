@@ -10,13 +10,9 @@ public class MovementTest
     [UnityTest]
     public IEnumerator Move()
     {
-        var gameObject = new GameObject();
-        var inputController = gameObject.AddComponent<PlayerInput>();
-        var rigidBody = gameObject.AddComponent<Rigidbody2D>();
-        var player = gameObject.AddComponent<Player>();
-        player.SetRigidBody(rigidBody);
+        Inits.InitPlayer(out Player player);
 
-        var startPosition = player.transform.position;
+        Vector3 startPosition = player.transform.position;
         player.Move(0.1f);
 
         yield return new WaitForSeconds(2f);
@@ -32,17 +28,11 @@ public class MovementTest
     [UnityTest]
     public IEnumerator Jump()
     {
-        var gameObject = new GameObject();
-        var boxCollider2D = gameObject.AddComponent<BoxCollider2D>();
-        var inputController = gameObject.AddComponent<PlayerInput>();
-        var rigidBody = gameObject.AddComponent<Rigidbody2D>();        
-        var player = gameObject.AddComponent<Player>();
-        player.SetRigidBody(rigidBody);
-        player.SetCollider(boxCollider2D);
+        Inits.InitPlayer(out Player player);
 
         player.Jump();
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.1f);
         Assert.IsFalse(player.IsGrounded);
     }
 }

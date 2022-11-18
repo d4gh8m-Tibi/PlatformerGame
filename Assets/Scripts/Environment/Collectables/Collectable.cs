@@ -14,8 +14,13 @@ public abstract class Collectable : Collidable
         }
     }
 
-    protected virtual void OnCollect() 
+    protected virtual void OnCollect()
     {
         collected = true;
+    }
+
+    public void SetStarCollider(BoxCollider2D boxCollider)
+    {
+        base.SetCollider(boxCollider);
     }
 }
