@@ -13,15 +13,15 @@ public class MovementTest
         Inits.InitPlayer(out Player player);
 
         Vector3 startPosition = player.transform.position;
-        player.Move(0.1f);
+        player.Move(0.6f);
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(4f);
         Assert.IsTrue(player.transform.position.x > startPosition.x);
 
         startPosition = player.transform.position;
-        player.Move(-0.1f);
+        player.Move(-0.6f);
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(4f);
         Assert.IsTrue(player.transform.position.x < startPosition.x);
     }
 

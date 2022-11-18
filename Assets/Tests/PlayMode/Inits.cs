@@ -13,6 +13,7 @@ public static class Inits
         PlayerInput inputController = playerGameObject.AddComponent<PlayerInput>();
         BoxCollider2D boxCollider2D = playerGameObject.AddComponent<BoxCollider2D>();
         Rigidbody2D rigidBody = playerGameObject.AddComponent<Rigidbody2D>();
+        Animator animator = playerGameObject.AddComponent<Animator>();
         player.SetRigidBody(rigidBody);
         player.SetCollider(boxCollider2D);
     }
