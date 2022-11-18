@@ -1,8 +1,14 @@
 public static class Constants
 {
-    public static class GAME
+    public static class Game
     {
-        public static float GAMESPEED = 1f;
-        public static float GAMESPEEDSTOPPED = 0f;
+        public const float GAMESPEED = 1f;
+        public const float GAMESPEEDSTOPPED = 0f;
+    }
+
+    public static class Scenes
+    {
+        public const int MENU = 0; 
+        public const int MAP1 = 1; 
     }
 }

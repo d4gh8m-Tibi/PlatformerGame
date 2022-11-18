@@ -8,43 +8,38 @@ public class MovementTest
 {
 
     [UnityTest]
-    public IEnumerator Move()
+    public IEnumerator MoveRight()
     {
-        var gameObject = new GameObject();
-        var inputController = gameObject.AddComponent<PlayerInput>();
-        var rigidBody = gameObject.AddComponent<Rigidbody2D>();
-        var animator = gameObject.AddComponent<Animator>();
-        var player = gameObject.AddComponent<Player>();
-        player.SetRigidBody(rigidBody);
+        Inits.InitPlayer(out Player player);
 
-        var startPosition = player.transform.position;
-        player.Move(0.1f);
+        Vector3 startPosition = player.transform.position;
+        player.Move(3f);
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(4f);
+        Debug.Log("Player position:" + player.transform.position.x + " start position " + startPosition.x);
         Assert.IsTrue(player.transform.position.x > startPosition.x);
+    }
 
-        startPosition = player.transform.position;
-        player.Move(-0.1f);
+    [UnityTest]
+    public IEnumerator MoveLeft()
+    {
+        Inits.InitPlayer(out Player player);
+        Vector3 startPosition = player.transform.position;
+        player.Move(-3f);
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(4f);
+        Debug.Log("Player position:" + player.transform.position.x + " start position " + startPosition.x);
         Assert.IsTrue(player.transform.position.x < startPosition.x);
     }
 
     [UnityTest]
     public IEnumerator Jump()
     {
-        var gameObject = new GameObject();
-        var boxCollider2D = gameObject.AddComponent<BoxCollider2D>();
-        var inputController = gameObject.AddComponent<PlayerInput>();
-        var rigidBody = gameObject.AddComponent<Rigidbody2D>();
-        var animator = gameObject.AddComponent<Animator>();
-        var player = gameObject.AddComponent<Player>();
-        player.SetRigidBody(rigidBody);
-        player.SetCollider(boxCollider2D);
+        Inits.InitPlayer(out Player player);
 
         player.Jump();
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.1f);
         Assert.IsFalse(player.IsGrounded);
     }
 }

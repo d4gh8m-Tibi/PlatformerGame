@@ -16,6 +16,8 @@ public class Player : MonoBehaviour
     private BoxCollider2D boxCollider2D;
     private PlayerInput playerInput;
     private GameController gameController;
+    public int StarCounter { get; private set; } = 0;
+    
     private Animator animator;
     private PlayerAction playerActionState = PlayerAction.Idle;
 
@@ -26,6 +28,7 @@ public class Player : MonoBehaviour
         animator = GetComponent<Animator>();
         playerInput = PlayerInput.Instance;
         gameController = GameController.instance;
+        boxCollider2D.tag = "Player";
     }
 
     private void Awake()
@@ -96,12 +99,10 @@ public class Player : MonoBehaviour
         if (playerInput.HorizontalInput > 0f)
         {
             playerActionState = PlayerAction.Move;
-            //sprite.flipX = false;
         }
         else if (playerInput.HorizontalInput < 0f)
         {
             playerActionState = PlayerAction.Move;
-            //sprite.flipX = true;
         }
         else
         {
@@ -114,5 +115,11 @@ public class Player : MonoBehaviour
         }
       
         animator.SetInteger("state", (int)playerActionState);
+    }
+
+    public void IncrementStars()
+    {
+        StarCounter++;
+        Debug.Log(StarCounter);
     }
 }
