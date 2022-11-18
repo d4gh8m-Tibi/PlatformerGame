@@ -23,8 +23,7 @@ public class PlayerInput : MonoBehaviour
     }
 
     private void Update()
-    {
-        
+    {        
         CheckXAxis();
         CheckInput();
     }
@@ -32,15 +31,7 @@ public class PlayerInput : MonoBehaviour
     private void CheckXAxis()
     {
         HorizontalInput = Input.GetAxis("Horizontal");
-        if (HorizontalInput != 0 && !Actions.Contains(PlayerAction.MoveHorizontal))
-        {
-            
-            Actions.Add(PlayerAction.MoveHorizontal);
-        }
-        else
-        {
-            Actions.Remove(PlayerAction.MoveHorizontal);
-        }
+        Actions.Add(PlayerAction.Move);
     }
 
     private void CheckInput()
@@ -54,15 +45,5 @@ public class PlayerInput : MonoBehaviour
             Debug.Log("Escape key was released");
             Actions.Add(PlayerAction.Menu);
         }
-        else
-        {
-            if (!Actions.Contains(PlayerAction.Idle))
-            {
-                Actions.Add(PlayerAction.Idle);
-            }
-        }
     }
-
-
-
 }

@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
     private Rigidbody2D rigidBody;
     
     [SerializeField]
-    private float movementSpeed = 7f;
+    private float movementSpeed = 5f;
     [SerializeField]
     private float jumpForce = 7f;
     [SerializeField]
@@ -18,11 +18,14 @@ public class Player : MonoBehaviour
     private GameController gameController;
     public int StarCounter { get; private set; } = 0;
     
+    private Animator animator;
+    private PlayerAction playerActionState = PlayerAction.Idle;
 
     private void Start()
     {
         SetRigidBody(GetComponent<Rigidbody2D>());
         boxCollider2D = GetComponent<BoxCollider2D>();
+        animator = GetComponent<Animator>();
         playerInput = PlayerInput.Instance;
         gameController = GameController.instance;
         boxCollider2D.tag = "Player";
@@ -36,6 +39,7 @@ public class Player : MonoBehaviour
     private void Update()
     {
         ExecutePlayerInputs(playerInput.Actions);
+        UpdateAnimationState();
     }
 
     private void ExecutePlayerInputs(List<PlayerAction> actions)
@@ -45,10 +49,11 @@ public class Player : MonoBehaviour
             Jump();
             actions.Remove(PlayerAction.Jump);
         }
-        else if(actions.Contains(PlayerAction.MoveHorizontal))
+        else if(actions.Contains(PlayerAction.Move))
         {
             Move(playerInput.HorizontalInput);
-            actions.Remove(PlayerAction.MoveHorizontal);
+            actions.Remove(PlayerAction.Move);
+
         }
         else if(actions.Contains(PlayerAction.Menu))
         {
@@ -60,15 +65,7 @@ public class Player : MonoBehaviour
 
     public void Move(float directionInput)
     {
-        if (directionInput != 0)
-        {
-            var dirX = directionInput > 0 ? 0.5f : -0.5f;
-            rigidBody.velocity = new Vector2(dirX * 7f, rigidBody.velocity.y);
-        }
-        else
-        {
-            rigidBody.velocity = new Vector2(0, rigidBody.velocity.y);
-        }
+        rigidBody.velocity = new Vector2(directionInput * movementSpeed, rigidBody.velocity.y);
     }
 
     public void Jump()
@@ -95,6 +92,29 @@ public class Player : MonoBehaviour
         {
             return Physics2D.BoxCast(boxCollider2D.bounds.center, boxCollider2D.bounds.size, 0f, Vector2.down, .1f, jumpableGround);
         }        
+    }
+
+    public void UpdateAnimationState()
+    {
+        if (playerInput.HorizontalInput > 0f)
+        {
+            playerActionState = PlayerAction.Move;
+        }
+        else if (playerInput.HorizontalInput < 0f)
+        {
+            playerActionState = PlayerAction.Move;
+        }
+        else
+        {
+            playerActionState = PlayerAction.Idle;
+        }
+
+        if (rigidBody.velocity.y > .1f)
+        {
+            playerActionState = PlayerAction.Jump;
+        }
+      
+        animator.SetInteger("state", (int)playerActionState);
     }
 
     public void IncrementStars()
