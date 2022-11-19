@@ -1,3 +1,4 @@
+using Assets.Scripts.MapGen;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,29 +15,19 @@ public class MapGeneration : MonoBehaviour
 
     [SerializeField] private Vector2Int Origo;
 
-    [SerializeField] private int PlatformCount = 10;
-    [SerializeField] private int PlatformLenght = 4;
-    [SerializeField] private int PlatformDistance = 3;
-    [SerializeField] private Vector2Int SafeZone = new Vector2Int (5, 0);
+    [SerializeField] private Vector2Int chunkDimensions = new Vector2Int(10,10);
+    [SerializeField] private int chunkSize = 10;
+    private Chunk [,] chunkMap;
 
     // Start is called before the first frame update
     void Start()
     {
-        int offset = SafeZone.x;
-        for (int i = 0; i < PlatformCount; i++) {
-            offset += PlatformDistance;
-            for (int j = 0; j < PlatformLenght; j++) {
-                tilemap.SetTile (new Vector3Int (offset + j, Origo.y, 0), Ground1);
-            }
-            offset += PlatformLenght;
-        }
+        //TileFunctions.PlaceTiles (5, tilemap, Ground1, Vector2Int.zero, Vector2Int.up);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+      
     }
-
-
 }
