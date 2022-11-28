@@ -4,6 +4,8 @@ using UnityEngine.SceneManagement;
 public class GameController : MonoBehaviour
 {
     public static GameController instance;
+
+    [SerializeField] private GameObject pauseMenuUI;
     
     private PlayerInput playerInput;
     private void Awake()
@@ -16,11 +18,13 @@ public class GameController : MonoBehaviour
 
     public void PauseGame()
     {
+        pauseMenuUI.SetActive(true);
         Time.timeScale = Constants.Game.GAMESPEEDSTOPPED;
     }
 
     public void ResumeGame()
     {
+        pauseMenuUI.SetActive(false);
         Time.timeScale = Constants.Game.GAMESPEED;
     }
 
