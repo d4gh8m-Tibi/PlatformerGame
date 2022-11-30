@@ -50,8 +50,7 @@ jobs:
         with:
           testMode: ${{ matrix.testMode }}
           checkName: ${{ matrix.testMode }} test results
-          coveragePath: ./coverage-results-${{ matrix.targetPlatform }}
-          customParameters: -debugCodeOptimization -enableCodeCoverage -coverageResultsPath ${{ coveragePath }} -coverageOptions 'generateAdditionalMetrics;generateHtmlReport;generateBadgeReport;assemblyFilters:+my.assembly.*'
+          customParameters: -debugCodeOptimization -enableCodeCoverage -coverageResultsPath ./coverage-results-${{ matrix.targetPlatform }} -coverageOptions 'generateAdditionalMetrics;generateHtmlReport;generateBadgeReport;assemblyFilters:+my.assembly.*'
           githubToken: ${{ secrets.GITHUB_TOKEN }}
           
       - uses: actions/upload-artifact@v3
@@ -61,7 +60,7 @@ jobs:
       - uses: actions/upload-artifact@v2
         with:
           name: Coverage results for ${{ matrix.testMode }}
-          path: ${{ steps.tests.outputs.coveragePath }}
+          path: ${{ steps.testRunner.outputs.coveragePath }}
 
   buildWindows:
     needs: testRunner
