@@ -13,8 +13,8 @@ jobs:
       fail-fast: false
       matrix:
         testMode:
-          - EditMode
-          - PlayMode
+          - editMode
+          - playMode
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
