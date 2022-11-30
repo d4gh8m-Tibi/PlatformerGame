@@ -50,7 +50,7 @@ jobs:
         with:
           testMode: ${{ matrix.testMode }}
           checkName: ${{ matrix.testMode }} test results
-          coverageOptions: 'generateAdditionalMetrics;generateHtmlReport;generateHtmlReportHistory;generateBadgeReport'
+          coverageOptions: 'generateAdditionalMetrics;generateHtmlReport;generateHtmlReportHistory;generateBadgeReport;dontClear'
           githubToken: ${{ secrets.GITHUB_TOKEN }}
           
       - uses: actions/upload-artifact@v3
