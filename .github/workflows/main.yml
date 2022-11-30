@@ -49,7 +49,11 @@ jobs:
         id: testRunner
         with:
           testMode: ${{ matrix.testMode }}
-          customParameters: -debugCodeOptimization -enableCodeCoverage -coverageResultsPath ./coverage-results -coverageOptions generateAdditionalMetrics
+          customParameters: -debugCodeOptimization 
+                            -enableCodeCoverage 
+                            -coverageResultsPath ./coverage-results-${{ matrix.testMode }}
+                            -coverageHistoryPath ./coverage-results-history-${{ matrix.testMode }}
+                            -coverageOptions "generateAdditionalMetrics; generateHtmlReport; generateHtmlReportHistory; generateBadgeReport; dontClear"
           checkName: ${{ matrix.testMode }} test results
           githubToken: ${{ secrets.GITHUB_TOKEN }}
           
