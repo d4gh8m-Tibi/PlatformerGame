@@ -13,8 +13,8 @@ jobs:
       fail-fast: false
       matrix:
         testMode:
-          - editMode
-          - playMode
+          - EditMode
+          - PlayMode
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -51,8 +51,8 @@ jobs:
           testMode: ${{ matrix.testMode }}
           customParameters: -debugCodeOptimization 
                             -enableCodeCoverage 
-                            -coverageResultsPath ./coverage-results-${{ matrix.testMode }}
-                            -coverageHistoryPath ./coverage-results-history-${{ matrix.testMode }}
+                            -coverageResultsPath ./coverage-results
+                            -coverageHistoryPath ./coverage-results-history
                             -coverageOptions "generateAdditionalMetrics; generateHtmlReport; generateHtmlReportHistory; generateBadgeReport; dontClear"
           checkName: ${{ matrix.testMode }} test results
           githubToken: ${{ secrets.GITHUB_TOKEN }}
