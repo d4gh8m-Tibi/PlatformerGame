@@ -1,105 +1,40 @@
-name: Build PlatfroomerGame project
+name: PlatformerGame test
 
 on: [pull_request]
-
-env:
-  UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
-
+ 
 jobs:
-  testRunner:
-    name: Test in ${{ matrix.testMode }}
+
+  runTests:
+
+    name: Run Tests
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        testMode:
-          - EditMode
-          - PlayMode
+
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
 
-      - name: Create LFS file list
-        run: git lfs ls-files -l | cut -d' ' -f1 | sort > .lfs-assets-id
-
-      - name: Restore LFS cache
-        uses: actions/cache@v3
-        id: lfs-cache
+      - name: Checkout repository
+        uses: actions/checkout@v2
         with:
-          path: .git/lfs
-          key: ${{ runner.os }}-lfs-${{ hashFiles('.lfs-assets-id') }}
+          lfs: true
 
-      - name: Git LFS Pull
-        run: |
-          git lfs pull
-          git add .
-          git reset --hard
-          
-      - name: Restore Library cache
-        uses: actions/cache@v3
+      - name: Cache Library
+        uses: actions/cache@v2
         with:
           path: Library
-          key: Library-test-project-${{ matrix.targetPlatform }}
-          restore-keys: |
-            Library-test-project-
-            Library-
-            
-      - name: Run tests
+          key: Library
+
+      - name: Run tests and generate Coverage XML report
         uses: game-ci/unity-test-runner@v2
-        id: testRunner
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
         with:
-          testMode: ${{ matrix.testMode }}
-          checkName: ${{ matrix.testMode }} test results
-          coverageOptions: 'generateAdditionalMetrics;generateHtmlReport;generateHtmlReportHistory;generateBadgeReport'
-          githubToken: ${{ secrets.GITHUB_TOKEN }}
-          
-      - uses: actions/upload-artifact@v3
+          unityVersion: 2021.3.11f1
+          testMode: playmode
+          customParameters: -debugCodeOptimization -enableCodeCoverage -coverageResultsPath ./coverage-results -coverageOptions generateAdditionalMetrics
+      
+      - name: Upload XML report to Codecov
+        uses: codecov/codecov-action@v2
         with:
-          name: Test results (${{ matrix.testMode }})
-          path: ${{ steps.testRunner.outputs.artifactsPath }}
-      - uses: actions/upload-artifact@v3
-        with:
-          name: Coverage results for ${{ matrix.testMode }}
-          path: ${{ steps.testRunner.outputs.coveragePath }}
-
-  buildWindows:
-    needs: testRunner
-    name: Build for Windows
-    runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Create LFS file list
-        run: git lfs ls-files -l | cut -d' ' -f1 | sort > .lfs-assets-id
-
-      - name: Restore LFS cache
-        uses: actions/cache@v3
-        id: lfs-cache
-        with:
-          path: .git/lfs
-          key: ${{ runner.os }}-lfs-${{ hashFiles('.lfs-assets-id') }}
-
-      - name: Git LFS Pull
-        run: |
-          git lfs pull
-          git add .
-          git reset --hard
-      - name: Restore Library cache
-        uses: actions/cache@v3
-        with:
-          path: Library
-          key: Library-build-StandaloneWindows64
-          restore-keys: |
-            Library-build-
-            Library-
-      - uses: game-ci/unity-builder@v2
-        with:
-          targetPlatform: StandaloneWindows64
-
-      - uses: actions/upload-artifact@v3
-        with:
-          name: build-StandaloneWindows64
-          path: build/StandaloneWindows64
+          name: PlayMode
+          flags: automated
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: coverage-results/**/*.xml
