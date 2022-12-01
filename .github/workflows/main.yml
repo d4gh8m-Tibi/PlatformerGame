@@ -1,105 +1,47 @@
-name: Build PlatfroomerGame project
+name: Test project
 
-on: [pull_request]
-
-env:
-  UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+on: [push, pull_request]
 
 jobs:
-  testRunner:
+  testAllModes:
     name: Test in ${{ matrix.testMode }}
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
+        projectPath:
+          - PlatformerGame
         testMode:
-          - EditMode
-          - PlayMode
+          - playmode
+          - editmode
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Create LFS file list
-        run: git lfs ls-files -l | cut -d' ' -f1 | sort > .lfs-assets-id
-
-      - name: Restore LFS cache
-        uses: actions/cache@v3
-        id: lfs-cache
+      - uses: actions/checkout@v3
         with:
-          path: .git/lfs
-          key: ${{ runner.os }}-lfs-${{ hashFiles('.lfs-assets-id') }}
-
-      - name: Git LFS Pull
-        run: |
-          git lfs pull
-          git add .
-          git reset --hard
-          
-      - name: Restore Library cache
-        uses: actions/cache@v3
+          lfs: true
+      - uses: actions/cache@v3
         with:
-          path: Library
-          key: Library-test-project-${{ matrix.targetPlatform }}
+          path: ${{ matrix.projectPath }}/Library
+          key: Library-${{ matrix.projectPath }}
           restore-keys: |
-            Library-test-project-
             Library-
-            
-      - name: Run tests
-        uses: game-ci/unity-test-runner@v2
-        id: testRunner
+      - uses: game-ci/unity-test-runner@v3
+        id: tests
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
         with:
+          projectPath: ${{ matrix.projectPath }}
           testMode: ${{ matrix.testMode }}
-          checkName: ${{ matrix.testMode }} test results
-          coverageOptions: 'generateAdditionalMetrics;generateHtmlReport;generateHtmlReportHistory;generateBadgeReport;dontClear'
+          artifactsPath: ${{ matrix.testMode }}-artifacts
           githubToken: ${{ secrets.GITHUB_TOKEN }}
-          
+          checkName: ${{ matrix.testMode }} Test Results
+          coverageOptions: 'generateAdditionalMetrics;generateHtmlReport;generateBadgeReport;assemblyFilters:+my.assembly.*'
       - uses: actions/upload-artifact@v3
+        if: always()
         with:
-          name: Test results (${{ matrix.testMode }})
-          path: ${{ steps.testRunner.outputs.artifactsPath }}
+          name: Test results for ${{ matrix.testMode }}
+          path: ${{ steps.tests.outputs.artifactsPath }}
       - uses: actions/upload-artifact@v3
+        if: always()
         with:
           name: Coverage results for ${{ matrix.testMode }}
-          path: ${{ steps.testRunner.outputs.coveragePath }}
-
-  buildWindows:
-    needs: testRunner
-    name: Build for Windows
-    runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Create LFS file list
-        run: git lfs ls-files -l | cut -d' ' -f1 | sort > .lfs-assets-id
-
-      - name: Restore LFS cache
-        uses: actions/cache@v3
-        id: lfs-cache
-        with:
-          path: .git/lfs
-          key: ${{ runner.os }}-lfs-${{ hashFiles('.lfs-assets-id') }}
-
-      - name: Git LFS Pull
-        run: |
-          git lfs pull
-          git add .
-          git reset --hard
-      - name: Restore Library cache
-        uses: actions/cache@v3
-        with:
-          path: Library
-          key: Library-build-StandaloneWindows64
-          restore-keys: |
-            Library-build-
-            Library-
-      - uses: game-ci/unity-builder@v2
-        with:
-          targetPlatform: StandaloneWindows64
-
-      - uses: actions/upload-artifact@v3
-        with:
-          name: build-StandaloneWindows64
-          path: build/StandaloneWindows64
+          path: ${{ steps.tests.outputs.coveragePath }}
