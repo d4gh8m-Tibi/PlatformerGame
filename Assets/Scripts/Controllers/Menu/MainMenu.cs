@@ -7,6 +7,7 @@ public class MainMenu : MonoBehaviour
 {
     public void StartNewGame()
     {
+        Time.timeScale = Constants.Game.GAMESPEED;
         SceneManager.LoadScene(Constants.Scenes.MAP1);
     }
 

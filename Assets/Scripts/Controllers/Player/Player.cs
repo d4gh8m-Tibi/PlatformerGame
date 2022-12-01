@@ -55,7 +55,8 @@ public class Player : MonoBehaviour
             actions.Remove(PlayerAction.Move);
 
         }
-        else if(actions.Contains(PlayerAction.Menu))
+        
+        if(actions.Contains(PlayerAction.Menu))
         {
             //openmenu
             gameController.SetGameSpeedForMenu();
