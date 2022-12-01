@@ -1,47 +1,34 @@
-name: Test project
+name: PlatformerGame test
 
 on: [pull_request]
-
+ 
 jobs:
-  testAllModes:
-    name: Test in ${{ matrix.testMode }}
+
+  runTests:
+
+    name: Run Tests
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        projectPath:
-          - ./
-        testMode:
-          - playmode
-          - editmode
+
     steps:
-      - uses: actions/checkout@v3
+
+      - name: Checkout repository
+        uses: actions/checkout@v2
         with:
           lfs: true
-      - uses: actions/cache@v3
+
+      - name: Cache Library
+        uses: actions/cache@v2
         with:
-          path: ${{ matrix.projectPath }}/Library
-          key: Library-${{ matrix.projectPath }}
-          restore-keys: |
-            Library-
-      - uses: game-ci/unity-test-runner@v2
-        id: tests
+          path: Library
+          key: Library
+
+      - name: Run tests and generate Coverage XML report
+        uses: game-ci/unity-test-runner@v2
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
         with:
-          projectPath: ${{ matrix.projectPath }}
-          testMode: ${{ matrix.testMode }}
-          artifactsPath: ${{ matrix.testMode }}-artifacts
-          githubToken: ${{ secrets.GITHUB_TOKEN }}
-          checkName: ${{ matrix.testMode }} Test Results
-          coverageOptions: 'generateAdditionalMetrics;generateHtmlReport;generateBadgeReport;assemblyFilters:+my.assembly.*'
-      - uses: actions/upload-artifact@v3
-        if: always()
-        with:
-          name: Test results for ${{ matrix.testMode }}
-          path: ${{ steps.tests.outputs.artifactsPath }}
-      - uses: actions/upload-artifact@v3
-        if: always()
-        with:
-          name: Coverage results for ${{ matrix.testMode }}
-          path: ${{ steps.tests.outputs.coveragePath }}
+	  # Replace with the Unity version your project should be tested on.
+          # Minimum version: 2019.3
+          unityVersion: 2021.3.11f1
+          testMode: playmode
+          customParameters: -debugCodeOptimization -enableCodeCoverage -coverageResultsPath ./coverage-results -coverageOptions generateAdditionalMetrics
