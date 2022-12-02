@@ -12,6 +12,10 @@ public class Player : MonoBehaviour
     private float jumpForce = 7f;
     [SerializeField]
     private LayerMask jumpableGround;
+    [SerializeField]
+    private AudioSource effectSource;
+    [SerializeField]
+    private AudioClip[] audioEffects;
 
     private BoxCollider2D boxCollider2D;
     private PlayerInput playerInput;
@@ -66,6 +70,7 @@ public class Player : MonoBehaviour
 
     public void Move(float directionInput)
     {
+        
         rigidBody.velocity = new Vector2(directionInput * movementSpeed, rigidBody.velocity.y);
     }
 
@@ -73,6 +78,7 @@ public class Player : MonoBehaviour
     {
         if(IsGrounded)
         {
+            PlaySound(audioEffects[0]);
             GetComponent<Rigidbody2D>().velocity = new Vector3(0, jumpForce, 0);
         }
     }
@@ -122,5 +128,11 @@ public class Player : MonoBehaviour
     {
         StarCounter++;
         Debug.Log(StarCounter);
+    }
+
+    private void PlaySound(AudioClip effectClip)
+    {
+        effectSource.clip = effectClip;
+        effectSource.Play();
     }
 }

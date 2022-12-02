@@ -5,6 +5,8 @@ using UnityEngine;
 public abstract class Collectable : Collidable
 {
     protected bool collected;
+    [SerializeField]
+    private AudioClip collectedSound;
 
     protected override void OnCollide(Collider2D coll)
     {
@@ -17,6 +19,8 @@ public abstract class Collectable : Collidable
     protected virtual void OnCollect()
     {
         collected = true;
+        if(collectedSound != null)
+        gameController.PlaySoundEffect(collectedSound);
     }
 
     public void SetStarCollider(BoxCollider2D boxCollider)
