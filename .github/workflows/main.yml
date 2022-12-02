@@ -1,17 +1,14 @@
-name: Build PlatfroomerGame project
+name: Doxygen GitHub Pages Deploy Action
 
 on: [pull_request]
 
-env:
-  UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
-
-jobs:  
-  doxygen:
-    name: Generate Doxygen files
+jobs:
+  deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: mattnotmitt/doxygen-action@v1.9.5
+      - uses: DenverCoder1/doxygen-github-pages-action@v1.2.0
         with:
-          additional-packages: font-fira-code
-          doxyfile-path: './doxygen'
-          enable-latex: true
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: gh-pages
+          folder: docs/html
+          config_file: Doxyfile
