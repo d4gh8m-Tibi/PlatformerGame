@@ -13,5 +13,5 @@ jobs:
       - uses: mattnotmitt/doxygen-action@v1.9.5
         with:
           additional-packages: font-fira-code
-          doxyfile-path: 'doxygen/Doxyfile'
+          doxyfile-path: './doxygen'
           enable-latex: true
