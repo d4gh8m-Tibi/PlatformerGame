@@ -56,6 +56,17 @@ jobs:
         with:
           name: Test results (${{ matrix.testMode }})
           path: ${{ steps.testRunner.outputs.artifactsPath }}
+  
+  doxygen:
+    needs: testRunner
+    name: Generate Doxygen files
+    runs-on: ubuntu-latest
+    steps:
+      - uses: mattnotmitt/doxygen-action@v1.9.5
+        with:
+          additional-packages: font-fira-code
+          doxyfile-path: './doxygen'
+          enable-latex: true
 
   buildWindows:
     needs: testRunner
