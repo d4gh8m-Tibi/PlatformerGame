@@ -52,7 +52,7 @@ PROJECT_LOGO           =
 # If a relative path is entered, it will be relative to the location 
 # where doxygen was started. If left blank the current directory will be used.
 
-OUTPUT_DIRECTORY       = "/doxygen" 
+OUTPUT_DIRECTORY       = "D:/PlatformerGame/Doxygen" 
 
 # If the CREATE_SUBDIRS tag is set to YES, then doxygen will create 
 # 4096 sub-directories (in 2 levels) under the output directory of each output 
@@ -891,7 +891,7 @@ HTML_STYLESHEET        =
 
 HTML_EXTRA_FILES       = 
 
-HTML_EXTRA_STYLESHEET  = "D:/PlatformerGame/doxygen/html/doxygen-awesome.css" "D:/PlatformerGame/doxygen/html/doxygen-awesome-sidebar-only.css" 
+HTML_EXTRA_STYLESHEET  = "D:/PlatformerGame/Doxygen/html/doxygen-awesome.css" "D:/PlatformerGame/Doxygen/html/doxygen-awesome-sidebar-only.css" 
 
 # The HTML_COLORSTYLE_HUE tag controls the color of the HTML output. 
 # Doxygen will adjust the colors in the stylesheet and background images 

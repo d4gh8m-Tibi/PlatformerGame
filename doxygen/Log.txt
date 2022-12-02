@@ -1,14 +1,14 @@
-warning: Tag 'FORMULA_TRANSPARENT' at line 1134 of file 'D:/PlatformerGame/doxygen/Doxyfile' has become obsolete.
+warning: Tag 'FORMULA_TRANSPARENT' at line 1134 of file 'D:/PlatformerGame/Doxygen/Doxyfile' has become obsolete.
          To avoid this warning please remove this line from your configuration file or upgrade it using "doxygen -u"
-warning: Tag 'LATEX_SOURCE_CODE' at line 1272 of file 'D:/PlatformerGame/doxygen/Doxyfile' has become obsolete.
+warning: Tag 'LATEX_SOURCE_CODE' at line 1272 of file 'D:/PlatformerGame/Doxygen/Doxyfile' has become obsolete.
          To avoid this warning please remove this line from your configuration file or upgrade it using "doxygen -u"
-warning: Tag 'CLASS_DIAGRAMS' at line 1532 of file 'D:/PlatformerGame/doxygen/Doxyfile' has become obsolete.
+warning: Tag 'CLASS_DIAGRAMS' at line 1532 of file 'D:/PlatformerGame/Doxygen/Doxyfile' has become obsolete.
          To avoid this warning please remove this line from your configuration file or upgrade it using "doxygen -u"
-warning: Tag 'DOT_FONTNAME' at line 1562 of file 'D:/PlatformerGame/doxygen/Doxyfile' has become obsolete.
+warning: Tag 'DOT_FONTNAME' at line 1562 of file 'D:/PlatformerGame/Doxygen/Doxyfile' has become obsolete.
          To avoid this warning please remove this line from your configuration file or upgrade it using "doxygen -u"
-warning: Tag 'DOT_FONTSIZE' at line 1567 of file 'D:/PlatformerGame/doxygen/Doxyfile' has become obsolete.
+warning: Tag 'DOT_FONTSIZE' at line 1567 of file 'D:/PlatformerGame/Doxygen/Doxyfile' has become obsolete.
          To avoid this warning please remove this line from your configuration file or upgrade it using "doxygen -u"
-warning: Tag 'DOT_TRANSPARENT' at line 1707 of file 'D:/PlatformerGame/doxygen/Doxyfile' has become obsolete.
+warning: Tag 'DOT_TRANSPARENT' at line 1707 of file 'D:/PlatformerGame/Doxygen/Doxyfile' has become obsolete.
          To avoid this warning please remove this line from your configuration file or upgrade it using "doxygen -u"
 Doxygen version used: 1.9.5 (2f6875a5ca481a69a6f32650c77a667f87d25e88)
 Searching for include files...
@@ -76,8 +76,8 @@ Associating documentation with concepts...
 Building example list...
 Searching for enumerations...
 Searching for documented typedefs...
-error: could not copy file D:/PlatformerGame/doxygen/html/doxygen-awesome.css to D:/PlatformerGame/doxygen/html/doxygen-awesome.css
-error: could not copy file D:/PlatformerGame/doxygen/html/doxygen-awesome-sidebar-only.css to D:/PlatformerGame/doxygen/html/doxygen-awesome-sidebar-only.css
+error: could not copy file D:/PlatformerGame/Doxygen/html/doxygen-awesome.css to D:/PlatformerGame/Doxygen/html/doxygen-awesome.css
+error: could not copy file D:/PlatformerGame/Doxygen/html/doxygen-awesome-sidebar-only.css to D:/PlatformerGame/Doxygen/html/doxygen-awesome-sidebar-only.css
 Searching for members imported via using declarations...
 Searching for included using directives...
 Searching for documented variables...
