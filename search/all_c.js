@@ -6,5 +6,6 @@ var searchData=
   ['playeraction_3',['PlayerAction',['../_player_action_8cs.html#aea132397c26cad8f8637a9422260deca',1,'PlayerAction.cs']]],
   ['playeraction_2ecs_4',['PlayerAction.cs',['../_player_action_8cs.html',1,'']]],
   ['playerinput_5',['PlayerInput',['../class_player_input.html',1,'']]],
-  ['playerinput_2ecs_6',['PlayerInput.cs',['../_player_input_8cs.html',1,'']]]
+  ['playerinput_2ecs_6',['PlayerInput.cs',['../_player_input_8cs.html',1,'']]],
+  ['playsoundeffect_7',['PlaySoundEffect',['../class_game_controller.html#a937dd29ded8b2426085cf58bca15feab',1,'GameController']]]
 ];
