@@ -891,7 +891,7 @@ HTML_STYLESHEET        =
 
 HTML_EXTRA_FILES       = 
 
-HTML_EXTRA_STYLESHEET  = "D:/PlatformerGame/Doxygen/html/doxygen-awesome.css" "D:/PlatformerGame/Doxygen/html/doxygen-awesome-sidebar-only.css" 
+HTML_EXTRA_STYLESHEET  = "/Doxygen/html/doxygen-awesome.css" "/Doxygen/html/doxygen-awesome-sidebar-only.css" 
 
 # The HTML_COLORSTYLE_HUE tag controls the color of the HTML output. 
 # Doxygen will adjust the colors in the stylesheet and background images 
