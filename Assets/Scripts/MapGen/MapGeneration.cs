@@ -22,7 +22,7 @@ public class MapGeneration : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        TileFunctions.PlaceTiles (5, tilemap, Ground1, Vector2Int.zero, Vector2Int.up);
+        TileFunctions.PlaceTiles (5, tilemap, Ground1, Vector2Int.zero, Vector2Int.left);
     }
 
     // Update is called once per frame

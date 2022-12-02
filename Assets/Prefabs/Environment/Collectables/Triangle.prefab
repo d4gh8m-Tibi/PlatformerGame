@@ -138,3 +138,4 @@ MonoBehaviour:
     maxDepth: 0
     minNormalAngle: 0
     maxNormalAngle: 0
+  collectedSound: {fileID: 8300000, guid: 229600db331a49c478d90e8f8fd22242, type: 3}
