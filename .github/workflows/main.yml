@@ -49,6 +49,7 @@ jobs:
         id: testRunner
         with:
           testMode: ${{ matrix.testMode }}
+          customParameters: -debugCodeOptimization -enableCodeCoverage -coverageResultsPath ./coverage-results -coverageOptions "generateAdditionalMetrics;;generateHtmlReport;generateHtmlReportHistory;generateBadgeReport"
           checkName: ${{ matrix.testMode }} test results
           githubToken: ${{ secrets.GITHUB_TOKEN }}
           
@@ -56,6 +57,14 @@ jobs:
         with:
           name: Test results (${{ matrix.testMode }})
           path: ${{ steps.testRunner.outputs.artifactsPath }}
+      
+      - name: Upload XML report to Codecov
+        uses: codecov/codecov-action@v2
+        with:
+          name: PlayMode
+          flags: automated
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: coverage-results/**/*.xml
 
   buildWindows:
     needs: testRunner
