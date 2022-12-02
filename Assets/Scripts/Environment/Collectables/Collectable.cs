@@ -19,6 +19,7 @@ public abstract class Collectable : Collidable
     protected virtual void OnCollect()
     {
         collected = true;
+        if(collectedSound != null)
         gameController.PlaySoundEffect(collectedSound);
     }
 

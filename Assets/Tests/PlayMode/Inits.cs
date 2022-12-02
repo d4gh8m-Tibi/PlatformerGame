@@ -14,6 +14,8 @@ public static class Inits
         BoxCollider2D boxCollider2D = playerGameObject.AddComponent<BoxCollider2D>();
         Rigidbody2D rigidBody = playerGameObject.AddComponent<Rigidbody2D>();
         Animator animator = playerGameObject.AddComponent<Animator>();
+        AudioSource audioSource = playerGameObject.AddComponent<AudioSource>();
+        AudioListener audioListener = playerGameObject.AddComponent<AudioListener>();
         player.SetRigidBody(rigidBody);
         player.SetCollider(boxCollider2D);
     }
