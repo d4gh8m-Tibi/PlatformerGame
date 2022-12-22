@@ -1,20 +1,23 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EndMapGoal : Collectable
+public abstract class MapTrigger : Collectable
 {
     protected override void OnCollide(Collider2D coll)
     {
-        if(coll.tag == "Player")
-        {
-            GameController gameController = GameController.instance;
-            gameController.FinishGame();
-        }        
+        if (coll.tag == "Player")
+        {            
+            OnTrigger();
+            base.OnCollide(coll);
+        }
     }
 
     protected override void SetCollider(BoxCollider2D boxCollider)
     {
         base.SetCollider(boxCollider);
     }
+
+    protected virtual void OnTrigger() { }
 }

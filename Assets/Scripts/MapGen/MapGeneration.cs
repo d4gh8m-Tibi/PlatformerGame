@@ -1,11 +1,13 @@
 using Assets.Scripts.MapGen;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
 public class MapGeneration : MonoBehaviour
 {
+    public static MapGeneration instance;
 
     [SerializeField] private Tilemap tilemap;
 
@@ -19,15 +21,32 @@ public class MapGeneration : MonoBehaviour
     [SerializeField] private int chunkSize = 10;
     private Chunk [,] chunkMap;
 
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private List<CheckPoint> checkPoints = new List<CheckPoint>();
+
+    public void Awake()
     {
-        TileFunctions.PlaceTiles (5, tilemap, Ground1, Vector2Int.zero, Vector2Int.left);
+        instance = this;
     }
 
-    // Update is called once per frame
-    void Update()
+    void Start()
     {
-      
+        GameController.instance.SetMapInstance();
+        TileFunctions.PlaceTiles (2, tilemap, Ground1, new Vector2Int(Origo.x + 7,Origo.y - 1), Vector2Int.right);
+    }
+
+    public Vector3 GetCheckPointPositionById(int id)
+    {
+        if(id > checkPoints.Count || !checkPoints.Any())
+        {
+            return Vector3.zero;
+        }
+
+        CheckPoint checkPoint = checkPoints.FirstOrDefault(i => i.GetId() == id);
+        if(checkPoint == null)
+        {
+            return Vector3.zero;
+        }
+
+        return checkPoint.Position;
     }
 }
