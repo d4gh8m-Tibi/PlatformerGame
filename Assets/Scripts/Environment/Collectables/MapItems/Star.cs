@@ -20,4 +20,14 @@ public class Star : Collectable
     {
         base.SetCollider(boxCollider);
     }
+
+    public override string GetId()
+    {
+        return nameof(Star) + "_" + id.ToString();
+    }
+
+    public override void OnLoadInit()
+    {
+        Destroy(gameObject);
+    }
 }

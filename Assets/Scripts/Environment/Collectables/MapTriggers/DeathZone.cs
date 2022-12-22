@@ -8,4 +8,9 @@ public class DeathZone : MapTrigger
     {
         GameController.instance.KillPlayer();
     }
+
+    public override string GetId() 
+    {
+        return nameof(DeathZone) + "_" + id.ToString(); 
+    }
 }

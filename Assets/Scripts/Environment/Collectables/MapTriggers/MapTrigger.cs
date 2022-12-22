@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class MapTrigger : Collectable
-{
+{    
     protected override void OnCollide(Collider2D coll)
     {
         if (coll.tag == "Player")
@@ -20,4 +20,5 @@ public abstract class MapTrigger : Collectable
     }
 
     protected virtual void OnTrigger() { }
+ 
 }

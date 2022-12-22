@@ -64,7 +64,8 @@ public class GameController : MonoBehaviour
     }
 
     public int CurrentLevelIndex => SceneManager.GetActiveScene().buildIndex;
-    private int lastCheckPointId { get; set; }
+    private int lastCheckPointId;
+    public int LastCheckPointIdValue => lastCheckPointId;
 
     public void FinishGame()
     {
@@ -84,7 +85,7 @@ public class GameController : MonoBehaviour
 
     private Vector3 GetCheckPoint()
     {
-        return map.GetCheckPointPositionById(lastCheckPointId);
+        return map.GetCheckPointPositionById(CheckPoint.GenerateIdString(lastCheckPointId));
     }
 
     public void SetLastCheckPointId(int id)

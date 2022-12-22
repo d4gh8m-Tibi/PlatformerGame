@@ -4,6 +4,7 @@ using UnityEngine;
 
 public abstract class Collectable : Collidable
 {
+    [SerializeField] protected int id;
     protected bool collected;
     [SerializeField]
     private AudioClip collectedSound;
@@ -27,4 +28,7 @@ public abstract class Collectable : Collidable
     {
         base.SetCollider(boxCollider);
     }
+
+    public virtual string GetId() { return ""; }
+    public virtual void OnLoadInit() { }
 }

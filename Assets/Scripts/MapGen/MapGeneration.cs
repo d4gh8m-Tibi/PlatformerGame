@@ -31,10 +31,11 @@ public class MapGeneration : MonoBehaviour
     void Start()
     {
         GameController.instance.SetMapInstance();
-        TileFunctions.PlaceTiles (2, tilemap, Ground1, new Vector2Int(Origo.x + 7,Origo.y - 1), Vector2Int.right);
+        TileFunctions.PlaceTiles (3, tilemap, Ground1, new Vector2Int(Origo.x + 7,Origo.y - 1), Vector2Int.right);
+        TileFunctions.PlaceTiles(3, tilemap, Ground1, new Vector2Int(Origo.x + 12, Origo.y - 1), Vector2Int.right);
     }
 
-    public Vector3 GetCheckPointPositionById(int id)
+    public Vector3 GetCheckPointPositionById(string id)
     {
         Vector3 startBase = new Vector3 (0,2,0);
         if(!checkPoints.Any())
@@ -42,7 +43,7 @@ public class MapGeneration : MonoBehaviour
             return startBase;
         }
 
-        CheckPoint checkPoint = checkPoints.FirstOrDefault(i => i.GetId() == id);
+        CheckPoint checkPoint = checkPoints.FirstOrDefault(i => i.GetId().Equals(id));
         if(checkPoint == null)
         {
             return startBase;
