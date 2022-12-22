@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['horizontalinput_0',['HorizontalInput',['../class_player_input.html#aba4e7788b01e1439f7f6796e0d2e6a37',1,'PlayerInput']]]
+  ['count_0',['Count',['../class_item_manager.html#a3b27ca40080ed7bfa5756bafbaa1ac51',1,'ItemManager']]],
+  ['currentlevelindex_1',['CurrentLevelIndex',['../class_game_controller.html#a196cfce1a4a4795bf4248dfbbc778512',1,'GameController']]]
 ];

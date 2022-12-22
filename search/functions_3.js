@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['jump_0',['Jump',['../class_player.html#a689d6b007b09f694a246fe806bef7d5f',1,'Player']]]
+  ['finishgame_0',['FinishGame',['../class_game_controller.html#a0dca08fd45765bd90904a7b85ff6dcf0',1,'GameController']]]
 ];

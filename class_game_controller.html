@@ -112,8 +112,18 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:acef5fa47a21089ac88b3035ae6089009"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2073343048e26dccd09c87a43f93ef21"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_controller.html#a2073343048e26dccd09c87a43f93ef21">SetGameSpeedForMenu</a> ()</td></tr>
 <tr class="separator:a2073343048e26dccd09c87a43f93ef21"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aef0882a6e9b4fe483f74a7eb02945edc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_controller.html#aef0882a6e9b4fe483f74a7eb02945edc">SetMapInstance</a> ()</td></tr>
+<tr class="separator:aef0882a6e9b4fe483f74a7eb02945edc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f17c95a01eb154ef331a5314e2f2d67"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_controller.html#a5f17c95a01eb154ef331a5314e2f2d67">SetPlayerInstace</a> ()</td></tr>
+<tr class="separator:a5f17c95a01eb154ef331a5314e2f2d67"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4024d783e21a6029149c33a559ad69ea"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_controller.html#a4024d783e21a6029149c33a559ad69ea">SetItemMangerInstace</a> ()</td></tr>
+<tr class="separator:a4024d783e21a6029149c33a559ad69ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0dca08fd45765bd90904a7b85ff6dcf0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_controller.html#a0dca08fd45765bd90904a7b85ff6dcf0">FinishGame</a> ()</td></tr>
 <tr class="separator:a0dca08fd45765bd90904a7b85ff6dcf0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d4f633673678acc4f1f254a7b712576"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_controller.html#a4d4f633673678acc4f1f254a7b712576">KillPlayer</a> ()</td></tr>
+<tr class="separator:a4d4f633673678acc4f1f254a7b712576"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac131d15dab961a6ffaf436c72f2603e6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_controller.html#ac131d15dab961a6ffaf436c72f2603e6">SetLastCheckPointId</a> (int id)</td></tr>
+<tr class="separator:ac131d15dab961a6ffaf436c72f2603e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a937dd29ded8b2426085cf58bca15feab"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_controller.html#a937dd29ded8b2426085cf58bca15feab">PlaySoundEffect</a> (AudioClip soundEffect)</td></tr>
 <tr class="separator:a937dd29ded8b2426085cf58bca15feab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -126,6 +136,10 @@ Static Public Attributes</h2></td></tr>
 Properties</h2></td></tr>
 <tr class="memitem:a8c6b8184f4f58a70c62826d832d64f99"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_controller.html#a8c6b8184f4f58a70c62826d832d64f99">IsRunning</a><code> [get]</code></td></tr>
 <tr class="separator:a8c6b8184f4f58a70c62826d832d64f99"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a196cfce1a4a4795bf4248dfbbc778512"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_controller.html#a196cfce1a4a4795bf4248dfbbc778512">CurrentLevelIndex</a><code> [get]</code></td></tr>
+<tr class="separator:a196cfce1a4a4795bf4248dfbbc778512"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a78f197e57666f3b9a6656fcf51de6f97"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game_controller.html#a78f197e57666f3b9a6656fcf51de6f97">LastCheckPointIdValue</a><code> [get]</code></td></tr>
+<tr class="separator:a78f197e57666f3b9a6656fcf51de6f97"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a id="a0dca08fd45765bd90904a7b85ff6dcf0" name="a0dca08fd45765bd90904a7b85ff6dcf0"></a>
@@ -136,6 +150,23 @@ Properties</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">void GameController.FinishGame </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4d4f633673678acc4f1f254a7b712576" name="a4d4f633673678acc4f1f254a7b712576"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4d4f633673678acc4f1f254a7b712576">&#9670;&#160;</a></span>KillPlayer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void GameController.KillPlayer </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -214,6 +245,75 @@ Properties</h2></td></tr>
 
 </div>
 </div>
+<a id="a4024d783e21a6029149c33a559ad69ea" name="a4024d783e21a6029149c33a559ad69ea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4024d783e21a6029149c33a559ad69ea">&#9670;&#160;</a></span>SetItemMangerInstace()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void GameController.SetItemMangerInstace </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac131d15dab961a6ffaf436c72f2603e6" name="ac131d15dab961a6ffaf436c72f2603e6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac131d15dab961a6ffaf436c72f2603e6">&#9670;&#160;</a></span>SetLastCheckPointId()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void GameController.SetLastCheckPointId </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>id</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aef0882a6e9b4fe483f74a7eb02945edc" name="aef0882a6e9b4fe483f74a7eb02945edc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aef0882a6e9b4fe483f74a7eb02945edc">&#9670;&#160;</a></span>SetMapInstance()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void GameController.SetMapInstance </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5f17c95a01eb154ef331a5314e2f2d67" name="a5f17c95a01eb154ef331a5314e2f2d67"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5f17c95a01eb154ef331a5314e2f2d67">&#9670;&#160;</a></span>SetPlayerInstace()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void GameController.SetPlayerInstace </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <h2 class="groupheader">Member Data Documentation</h2>
 <a id="a47a1897c0b58d1ba2f424f1b83cb7bfb" name="a47a1897c0b58d1ba2f424f1b83cb7bfb"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a47a1897c0b58d1ba2f424f1b83cb7bfb">&#9670;&#160;</a></span>instance</h2>
@@ -238,6 +338,28 @@ Properties</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Property Documentation</h2>
+<a id="a196cfce1a4a4795bf4248dfbbc778512" name="a196cfce1a4a4795bf4248dfbbc778512"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a196cfce1a4a4795bf4248dfbbc778512">&#9670;&#160;</a></span>CurrentLevelIndex</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int GameController.CurrentLevelIndex</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a8c6b8184f4f58a70c62826d832d64f99" name="a8c6b8184f4f58a70c62826d832d64f99"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8c6b8184f4f58a70c62826d832d64f99">&#9670;&#160;</a></span>IsRunning</h2>
 
@@ -260,6 +382,28 @@ Properties</h2></td></tr>
 
 </div>
 </div>
+<a id="a78f197e57666f3b9a6656fcf51de6f97" name="a78f197e57666f3b9a6656fcf51de6f97"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a78f197e57666f3b9a6656fcf51de6f97">&#9670;&#160;</a></span>LastCheckPointIdValue</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int GameController.LastCheckPointIdValue</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>Assets/Scripts/Controllers/Game/<a class="el" href="_game_controller_8cs.html">GameController.cs</a></li>
 </ul>
@@ -269,7 +413,7 @@ Properties</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_game_controller.html">GameController</a></li>
-    <li class="footer">Generated on Fri Dec 16 2022 18:25:40 for PlatformerGame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
+    <li class="footer">Generated on Thu Dec 22 2022 20:52:29 for PlatformerGame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
   </ul>
 </div>
 </body>

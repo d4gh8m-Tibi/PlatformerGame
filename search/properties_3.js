@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['starcounter_0',['StarCounter',['../class_player.html#af34128e125d60eeabf6ef7c47adb1915',1,'Player']]]
+  ['horizontalinput_0',['HorizontalInput',['../class_player_input.html#aba4e7788b01e1439f7f6796e0d2e6a37',1,'PlayerInput']]]
 ];

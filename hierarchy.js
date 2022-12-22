@@ -8,15 +8,23 @@ var hierarchy =
       [ "CameraController", "class_camera_controller.html", null ],
       [ "Collidable", "class_collidable.html", [
         [ "Collectable", "class_collectable.html", [
-          [ "EndMapGoal", "class_end_map_goal.html", null ],
+          [ "MapTrigger", "class_map_trigger.html", [
+            [ "CheckPoint", "class_check_point.html", null ],
+            [ "DeathZone", "class_death_zone.html", null ],
+            [ "EndMapGoal", "class_end_map_goal.html", null ]
+          ] ],
           [ "Star", "class_star.html", null ]
         ] ]
       ] ],
       [ "GameController", "class_game_controller.html", null ],
+      [ "ItemManager", "class_item_manager.html", null ],
       [ "MainMenu", "class_main_menu.html", null ],
       [ "MapGeneration", "class_map_generation.html", null ],
+      [ "MenuData", "class_menu_data.html", null ],
       [ "Player", "class_player.html", null ],
       [ "PlayerInput", "class_player_input.html", null ]
     ] ],
+    [ "PlayerData", "class_player_data.html", null ],
+    [ "SaveController", "class_save_controller.html", null ],
     [ "Constants.Scenes", "class_constants_1_1_scenes.html", null ]
 ];

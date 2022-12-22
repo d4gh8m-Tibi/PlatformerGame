@@ -1,6 +1,8 @@
 var searchData=
 [
-  ['oncollect_0',['OnCollect',['../class_collectable.html#a4112d78461e91451e24d48b7ee2c9a20',1,'Collectable']]],
-  ['oncollide_1',['OnCollide',['../class_collectable.html#a951f41e030ac110b0c1e6f787893818f',1,'Collectable.OnCollide()'],['../class_end_map_goal.html#a6373b3ca46327440506a65feb7a1c2c8',1,'EndMapGoal.OnCollide()'],['../class_star.html#a42c4daf4f1d98813e65533e178a7231e',1,'Star.OnCollide()'],['../class_collidable.html#a0d3e67b35c70a629774a6cc38bf2caa8',1,'Collidable.OnCollide()']]],
-  ['origo_2',['origo',['../class_chunk.html#a363c06afaa552f5f71a86e32a2eb6170',1,'Chunk']]]
+  ['lastcheckpointidvalue_0',['LastCheckPointIdValue',['../class_game_controller.html#a78f197e57666f3b9a6656fcf51de6f97',1,'GameController']]],
+  ['level_1',['Level',['../class_player_data.html#a4df77e152ee8ffce54d9dd784c597de3',1,'PlayerData']]],
+  ['loaditemsonload_2',['LoadItemsOnLoad',['../class_item_manager.html#a5f0c830da32cd5f892e4f5ffa3aabd94',1,'ItemManager']]],
+  ['loadplayerdata_3',['LoadPlayerData',['../class_menu_data.html#a7c97281fd01c7b3e6fa72136223932cc',1,'MenuData']]],
+  ['loadstate_4',['LoadState',['../class_save_controller.html#a67e73179b6b7c4be9596ac15c3054503',1,'SaveController']]]
 ];

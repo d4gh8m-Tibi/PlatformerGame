@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['mainmenu_0',['MainMenu',['../class_main_menu.html',1,'']]],
-  ['mapgeneration_1',['MapGeneration',['../class_map_generation.html',1,'']]]
+  ['game_0',['Game',['../class_constants_1_1_game.html',1,'Constants']]],
+  ['gamecontroller_1',['GameController',['../class_game_controller.html',1,'']]]
 ];

@@ -103,9 +103,12 @@ Inheritance diagram for Collectable:</div>
  <div class="center">
   <img src="class_collectable.png" usemap="#Collectable_map" alt=""/>
   <map id="Collectable_map" name="Collectable_map">
-<area href="class_collidable.html" alt="Collidable" shape="rect" coords="56,56,158,80"/>
-<area href="class_end_map_goal.html" alt="EndMapGoal" shape="rect" coords="0,168,102,192"/>
-<area href="class_star.html" alt="Star" shape="rect" coords="112,168,214,192"/>
+<area href="class_collidable.html" alt="Collidable" shape="rect" coords="168,56,270,80"/>
+<area href="class_map_trigger.html" alt="MapTrigger" shape="rect" coords="112,168,214,192"/>
+<area href="class_star.html" alt="Star" shape="rect" coords="224,168,326,192"/>
+<area href="class_check_point.html" alt="CheckPoint" shape="rect" coords="0,224,102,248"/>
+<area href="class_death_zone.html" alt="DeathZone" shape="rect" coords="112,224,214,248"/>
+<area href="class_end_map_goal.html" alt="EndMapGoal" shape="rect" coords="224,224,326,248"/>
   </map>
 </div></div>
 <table class="memberdecls">
@@ -113,6 +116,10 @@ Inheritance diagram for Collectable:</div>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a8c8850a54705271c41302d59262a249c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_collectable.html#a8c8850a54705271c41302d59262a249c">SetStarCollider</a> (BoxCollider2D boxCollider)</td></tr>
 <tr class="separator:a8c8850a54705271c41302d59262a249c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac46b52833ecf0f8c3112562e5a4a6f0f"><td class="memItemLeft" align="right" valign="top">virtual string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_collectable.html#ac46b52833ecf0f8c3112562e5a4a6f0f">GetId</a> ()</td></tr>
+<tr class="separator:ac46b52833ecf0f8c3112562e5a4a6f0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae684ed67855bfa6574d58c320ff0ef52"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_collectable.html#ae684ed67855bfa6574d58c320ff0ef52">OnLoadInit</a> ()</td></tr>
+<tr class="separator:ae684ed67855bfa6574d58c320ff0ef52"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
@@ -132,6 +139,8 @@ Protected Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
+<tr class="memitem:a5d28fc799f1d0018a59bbb3cd1d75504"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_collectable.html#a5d28fc799f1d0018a59bbb3cd1d75504">id</a></td></tr>
+<tr class="separator:a5d28fc799f1d0018a59bbb3cd1d75504"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ade015624b0cb92ce277d1e2aed583326"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_collectable.html#ade015624b0cb92ce277d1e2aed583326">collected</a></td></tr>
 <tr class="separator:ade015624b0cb92ce277d1e2aed583326"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_attribs_class_collidable"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_class_collidable')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="class_collidable.html">Collidable</a></td></tr>
@@ -145,6 +154,33 @@ Additional Inherited Members</h2></td></tr>
 <tr class="separator:aff7bc275d05e36350766cd764189adee inherit pub_attribs_class_collidable"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="ac46b52833ecf0f8c3112562e5a4a6f0f" name="ac46b52833ecf0f8c3112562e5a4a6f0f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac46b52833ecf0f8c3112562e5a4a6f0f">&#9670;&#160;</a></span>GetId()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual string Collectable.GetId </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Reimplemented in <a class="el" href="class_star.html#af1875b15685c3d6da85af40876c8191f">Star</a>, <a class="el" href="class_check_point.html#ad6e97bbc4a2d9cb76afd5efc336ee02c">CheckPoint</a>, and <a class="el" href="class_death_zone.html#a2bfc255b4b9a5672d0795da411c678c7">DeathZone</a>.</p>
+
+</div>
+</div>
 <a id="a4112d78461e91451e24d48b7ee2c9a20" name="a4112d78461e91451e24d48b7ee2c9a20"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4112d78461e91451e24d48b7ee2c9a20">&#9670;&#160;</a></span>OnCollect()</h2>
 
@@ -196,7 +232,34 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="class_collidable.html#a0d3e67b35c70a629774a6cc38bf2caa8">Collidable</a>.</p>
 
-<p>Reimplemented in <a class="el" href="class_end_map_goal.html#a6373b3ca46327440506a65feb7a1c2c8">EndMapGoal</a>, and <a class="el" href="class_star.html#a42c4daf4f1d98813e65533e178a7231e">Star</a>.</p>
+<p>Reimplemented in <a class="el" href="class_star.html#a42c4daf4f1d98813e65533e178a7231e">Star</a>, and <a class="el" href="class_map_trigger.html#a59ca8dceda5d0a1185a71967695a7e17">MapTrigger</a>.</p>
+
+</div>
+</div>
+<a id="ae684ed67855bfa6574d58c320ff0ef52" name="ae684ed67855bfa6574d58c320ff0ef52"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae684ed67855bfa6574d58c320ff0ef52">&#9670;&#160;</a></span>OnLoadInit()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void Collectable.OnLoadInit </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Reimplemented in <a class="el" href="class_star.html#a8cf6d014934961149b0c66a258ae498c">Star</a>, and <a class="el" href="class_check_point.html#ae8d2203ae94d5d0e55ee543d797db05a">CheckPoint</a>.</p>
 
 </div>
 </div>
@@ -241,6 +304,28 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
+<a id="a5d28fc799f1d0018a59bbb3cd1d75504" name="a5d28fc799f1d0018a59bbb3cd1d75504"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5d28fc799f1d0018a59bbb3cd1d75504">&#9670;&#160;</a></span>id</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Collectable.id</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>Assets/Scripts/Environment/Collectables/<a class="el" href="_collectable_8cs.html">Collectable.cs</a></li>
 </ul>
@@ -250,7 +335,7 @@ Additional Inherited Members</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_collectable.html">Collectable</a></li>
-    <li class="footer">Generated on Fri Dec 16 2022 18:25:40 for PlatformerGame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
+    <li class="footer">Generated on Thu Dec 22 2022 20:52:29 for PlatformerGame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
   </ul>
 </div>
 </body>
