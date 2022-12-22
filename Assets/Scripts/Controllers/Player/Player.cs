@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public static Player instance;
     private Rigidbody2D rigidBody;
     
     [SerializeField]
@@ -20,7 +21,7 @@ public class Player : MonoBehaviour
     private BoxCollider2D boxCollider2D;
     private PlayerInput playerInput;
     private GameController gameController;
-    public int StarCounter { get; private set; } = 0;
+    public int StarCounter { get; set; } = 0;
     
     private Animator animator;
     private PlayerAction playerActionState = PlayerAction.Idle;
@@ -32,12 +33,13 @@ public class Player : MonoBehaviour
         animator = GetComponent<Animator>();
         playerInput = PlayerInput.Instance;
         gameController = GameController.instance;
+        gameController.SetPlayerInstace();
         boxCollider2D.tag = "Player";
     }
 
     private void Awake()
     {
-       
+        instance = this;
     }
 
     private void Update()
@@ -86,6 +88,11 @@ public class Player : MonoBehaviour
     public void SetRigidBody(Rigidbody2D rigidbody)
     {
         rigidBody = rigidbody;
+    }
+
+    public void SetPosition(Vector3 position)
+    {
+        transform.position = position;
     }
 
     public void SetCollider(BoxCollider2D boxCollider2D)

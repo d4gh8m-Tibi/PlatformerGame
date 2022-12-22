@@ -12,6 +12,8 @@ public class CollectTest
     public IEnumerator CollectStar()
     {
         var gameObjectStar = new GameObject();
+        var gameController = gameObjectStar.AddComponent<GameController>();
+        var itemManager = gameObjectStar.AddComponent<ItemManager>();
         var star = gameObjectStar.AddComponent<Star>();
         var boxCollider2DStar = gameObjectStar.AddComponent<BoxCollider2D>();
         star.SetStarCollider(boxCollider2DStar);
@@ -32,6 +34,7 @@ public class CollectTest
     {
         var gameObjectSEndMapGoal = new GameObject();
         var gameController = gameObjectSEndMapGoal.AddComponent<GameController>();
+        var itemManager = gameObjectSEndMapGoal.AddComponent<ItemManager>();
         var endMapGoal = gameObjectSEndMapGoal.AddComponent<EndMapGoal>();
         var boxCollider2DEndMapGoal = gameObjectSEndMapGoal.AddComponent<BoxCollider2D>();
         endMapGoal.SetStarCollider(boxCollider2DEndMapGoal);
