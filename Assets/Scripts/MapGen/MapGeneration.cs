@@ -36,15 +36,16 @@ public class MapGeneration : MonoBehaviour
 
     public Vector3 GetCheckPointPositionById(int id)
     {
-        if(id > checkPoints.Count || !checkPoints.Any())
+        Vector3 startBase = new Vector3 (0,2,0);
+        if(!checkPoints.Any())
         {
-            return Vector3.zero;
+            return startBase;
         }
 
         CheckPoint checkPoint = checkPoints.FirstOrDefault(i => i.GetId() == id);
         if(checkPoint == null)
         {
-            return Vector3.zero;
+            return startBase;
         }
 
         return checkPoint.Position;

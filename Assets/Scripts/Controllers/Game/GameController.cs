@@ -77,6 +77,11 @@ public class GameController : MonoBehaviour
         player.SetPosition(GetCheckPoint());
     }
 
+    public void KillPlayer()
+    {
+        player.SetPosition(GetCheckPoint());
+    }
+
     private Vector3 GetCheckPoint()
     {
         return map.GetCheckPointPositionById(lastCheckPointId);
