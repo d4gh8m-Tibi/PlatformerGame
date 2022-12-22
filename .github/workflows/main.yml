@@ -83,9 +83,9 @@ jobs:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: ./html
 
-  buildWindows:
+  buildWebGL:
     needs: testRunner
-    name: Build for Windows
+    name: Build for WebGL 🖥️
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -112,15 +112,34 @@ jobs:
         uses: actions/cache@v3
         with:
           path: Library
-          key: Library-build-StandaloneWindows64
+          key: Library-build-WebGL
           restore-keys: |
             Library-build-
             Library-
       - uses: game-ci/unity-builder@v2
         with:
-          targetPlatform: StandaloneWindows64
+          targetPlatform: WebGL
 
       - uses: actions/upload-artifact@v3
         with:
-          name: build-StandaloneWindows64
-          path: build/StandaloneWindows64
+          name: build-WebGL
+          path: build/WebGL
+  
+  deployPages:
+    needs: buildWebGL
+    name: Deploy to Github Pages 🚀
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - uses: actions/download-artifact@v2
+        with:
+          name: build-WebGL
+          path: build
+
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@4.1.4
+        with:
+          branch: play-game
+          folder: build/WebGL
