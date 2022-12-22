@@ -11,6 +11,7 @@ public static class SaveController
 
     public static void SaveState(Player player, GameController gameController, ItemManager itemManager)
     {
+        Debug.Log("Saving...");
         BinaryFormatter formatter = new BinaryFormatter();
         string path = GetSavePath();
         using (FileStream stream = new FileStream(path, FileMode.Create))
@@ -19,10 +20,12 @@ public static class SaveController
             formatter.Serialize(stream, data);
             stream.Close();
         }
+        Debug.Log("Game was saved to " + path);
     }
 
     public static PlayerData LoadState()
     {
+        Debug.Log("Loading...");
         string path = GetSavePath();
         if (!File.Exists(path))
         {
@@ -35,6 +38,7 @@ public static class SaveController
         {
             PlayerData data = (PlayerData)formatter.Deserialize(stream);
             stream.Close();
+            Debug.Log("Game was loaded.");
             return data;
         }
     }

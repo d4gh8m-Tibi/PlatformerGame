@@ -8,7 +8,12 @@ public class ItemManager : MonoBehaviour
     private List<string> collectedItems = new List<string>();
     private void Awake()
     {
-        instance = this;
+        instance = this;        
+    }
+
+    private void Start()
+    {
+        GameController.instance.SetItemMangerInstace();
     }
 
     public void Add(string id)
@@ -28,7 +33,12 @@ public class ItemManager : MonoBehaviour
 
     public void LoadItemsOnLoad()
     {
-
+        var stars = FindObjectsOfType(typeof(Collectable)) as Collectable[];
+        foreach (var item in stars)
+        {
+            Debug.Log(item.gameObject.name);
+            item.OnLoadInit();
+        }
     }
 
 }

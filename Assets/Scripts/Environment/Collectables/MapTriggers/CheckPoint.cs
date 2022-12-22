@@ -9,6 +9,7 @@ public class CheckPoint : MapTrigger
         if (collected) return;
 
         GameController.instance.SetLastCheckPointId(id);
+        SaveController.SaveState(Player.instance,GameController.instance,ItemManager.instance);
         Debug.Log("checkpoint reached: " + id);
     }
 

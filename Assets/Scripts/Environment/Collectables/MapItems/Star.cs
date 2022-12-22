@@ -10,6 +10,7 @@ public class Star : Collectable
         {
             var player = coll.GetComponent<Player>();
             player.IncrementStars();
+            ItemManager.instance.Add(GetId());
             base.OnCollect();
             Destroy(gameObject);
         }

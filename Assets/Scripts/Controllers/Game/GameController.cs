@@ -13,6 +13,7 @@ public class GameController : MonoBehaviour
 
     private Player player;
     private MapGeneration map;
+    private ItemManager itemManager;
 
     private void Awake()
     {
@@ -20,9 +21,25 @@ public class GameController : MonoBehaviour
         playerInput = new PlayerInput();
     }
 
+    private bool IsReady => player != null && map != null && itemManager != null;
+    private bool initiated = false;
+
     private void Init()
     {
-        lastCheckPointId = 0;
+        if (initiated) return;
+        if (MenuData.instance == null)
+        {
+            initiated = true;
+            return;
+        };
+        if (!MenuData.instance.FromLoad) return;       
+        if (!IsReady) return;
+
+        PlayerData data = MenuData.instance.GetPlayerData();
+
+        SpawnPlayer(data);
+        LoadMapItems(data);
+        initiated = true;
     }
 
     public bool IsRunning => Time.timeScale > Constants.Game.GAMESPEEDSTOPPED;
@@ -56,12 +73,20 @@ public class GameController : MonoBehaviour
     public void SetMapInstance()
     {
         map = MapGeneration.instance;
+        Init();
     }
 
     public void SetPlayerInstace()
     {
         player = Player.instance;
+        Init();
     }
+    public void SetItemMangerInstace()
+    {
+        itemManager = ItemManager.instance;
+        Init();
+    }
+
 
     public int CurrentLevelIndex => SceneManager.GetActiveScene().buildIndex;
     private int lastCheckPointId;
@@ -72,20 +97,33 @@ public class GameController : MonoBehaviour
         SceneManager.LoadScene(Constants.Scenes.MENU);
     }
 
-    public void SpawnPlayer()
+    private void SpawnPlayer(PlayerData data)
     {
-        SceneManager.LoadScene(CurrentLevelIndex);
-        player.SetPosition(GetCheckPoint());
+        player.SetPosition(GetCheckPoint(data.Spawn));
+        player.StarCounter = data.Items.Length;//shall be fixed
     }
+
+    private void LoadMapItems(PlayerData data)
+    {
+        itemManager.LoadItemsOnLoad();
+    }
+
 
     public void KillPlayer()
     {
         player.SetPosition(GetCheckPoint());
     }
 
-    private Vector3 GetCheckPoint()
+    private Vector3 GetCheckPoint(string checkPointId = null)
     {
-        return map.GetCheckPointPositionById(CheckPoint.GenerateIdString(lastCheckPointId));
+        if(checkPointId == null)
+        {
+            return map.GetCheckPointPositionById(CheckPoint.GenerateIdString(lastCheckPointId));
+        }
+        else
+        {
+            return map.GetCheckPointPositionById(checkPointId);
+        }
     }
 
     public void SetLastCheckPointId(int id)

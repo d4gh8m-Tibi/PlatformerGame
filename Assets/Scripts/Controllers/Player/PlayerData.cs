@@ -5,19 +5,20 @@ using UnityEngine;
 [System.Serializable]
 public class PlayerData
 {
-    private int level;
-    private string[] items;
-    private int[] enemies;
+    public int Level { get; private set; }
+    public string[] Items { get; private set; }
+    public string Spawn { get; private set; }
+    public int[] Enemies { get; private set; }
 
     public PlayerData(Player player, GameController gameController, ItemManager itemManager)
     {
-        level = gameController.CurrentLevelIndex;
-        items = new string[itemManager.Count];
-        items[0] = CheckPoint.GenerateIdString(gameController.LastCheckPointIdValue);
+        Level = gameController.CurrentLevelIndex;
+        Spawn = CheckPoint.GenerateIdString(gameController.LastCheckPointIdValue);
+        Items = new string[itemManager.Count];
 
-        for (int i = 0; i < items.Length; ++i)
+        for (int i = 0; i < Items.Length; ++i)
         {
-            items[i] = itemManager.ElementAt(i);
+            Items[i] = itemManager.ElementAt(i);
         }
     }
 }
