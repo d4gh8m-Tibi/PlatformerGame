@@ -1,6 +1,8 @@
 name: Build PlatfroomerGame project
 
-on: [pull_request]
+on:
+  pull_request:
+    types: [closed]
 
 env:
   UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
@@ -123,3 +125,22 @@ jobs:
         with:
           name: build-WebGL
           path: build/WebGL
+  
+  deployPages:
+    needs: buildWebGL
+    name: Deploy to Github Pages 🚀
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - uses: actions/download-artifact@v2
+        with:
+          name: build-WebGL
+          path: build
+
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@4.1.4
+        with:
+          branch: play-game
+          folder: build/WebGL
