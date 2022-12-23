@@ -1,6 +1,4 @@
 using Assets.Scripts.MapGen;
-using System.CodeDom.Compiler;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -13,7 +11,7 @@ public class MapGeneration : MonoBehaviour
     [SerializeField] private Tilemap tilemap;
 
     [SerializeField] private TileBase Ground1;
-    [SerializeField] private TileBase Ground2;
+    [SerializeField] private TileBase PlatformMaterial;
     [SerializeField] private TileBase Air;
 
     [SerializeField] private Vector2Int Origo;
@@ -61,7 +59,7 @@ public class MapGeneration : MonoBehaviour
         chunkMap.Add (new Chunk (Origo, ChunkType.start, 10));
         Chunk nwChunk;
         for (int i = 0; i < pathLength; i++) {
-            ChunkType type = (ChunkType) Random.Range (3, 4);
+            ChunkType type = ChunkType.room;//(ChunkType) Random.Range (2, 4);
             int size;
             switch (type) {
                 case ChunkType.start:
@@ -70,8 +68,8 @@ public class MapGeneration : MonoBehaviour
                 case ChunkType.end:
                 size = 10;
                 break;
-                case ChunkType.rugged:
-                size = 40;
+                case ChunkType.room:
+                size = 16;
                 break;
                 case ChunkType.twoLayer:
                 size = 300;
@@ -80,10 +78,10 @@ public class MapGeneration : MonoBehaviour
                 size = 0;
                 break;
             }
-            nwChunk = new Chunk (chunkMap [chunkMap.Count - 1].origo + Vector2Int.right * chunkMap [chunkMap.Count - 1].lenght, type, size);
+            nwChunk = new Chunk (chunkMap.Last().origo + Vector2Int.right * chunkMap.Last().lenght, type, size);
             chunkMap.Add (nwChunk);
         }
-        nwChunk = new Chunk (chunkMap [chunkMap.Count - 1].origo + Vector2Int.right * chunkMap [chunkMap.Count - 1].lenght, ChunkType.end, 10);
+        nwChunk = new Chunk (chunkMap.Last ().origo + Vector2Int.right * chunkMap.Last ().lenght, ChunkType.end, 10);
         chunkMap.Add (nwChunk);
     }
 
@@ -94,8 +92,8 @@ public class MapGeneration : MonoBehaviour
             case ChunkType.end:
             TileFunctions.PlaceTiles (10, tilemap, Ground1, chunk.origo, Vector2Int.up);
             break;
-            case ChunkType.rugged:
-            GenerateRugged (chunk);
+            case ChunkType.room:
+            GenerateRoom (Random.Range(0,3), chunk);
             break;
             case ChunkType.twoLayer:
             GenerateTwoLayer (chunk);
@@ -106,58 +104,154 @@ public class MapGeneration : MonoBehaviour
     }
 
     private void GenerateTwoLayer (Chunk chunk) {
-        Random.InitState ((int)Time.time);
-        int platformPadding = 2;
-        int deflenght = 3;
-        int platformDiff = 2;
-        Vector2Int lastPosUp = chunk.origo + new Vector2Int (0, 3);
-        Vector2Int lasPosDown = chunk.origo + new Vector2Int (0, -4);
-        int lastLenghtUp = 0;
-        int verticalDiffUp = 0;
-        int lastLenghtDown = 0;
-        int verticalDiffDown = 0;
-        while (lastPosUp.x + lastLenghtUp - chunk.origo.x < chunk.lenght) {
-            lastLenghtUp = Random.Range (deflenght, deflenght + platformDiff);
-            if (verticalDiffUp > 15) {
-                int diff = Random.Range (-3, -2);
-                lastPosUp += new Vector2Int (0, diff);
-                verticalDiffUp += diff;
+        int [] verticalPos = new int [2] { 8, 0 };
+        int [] horizontalPos = new int [2] { 0, 0 };
+        int minPadding = 2;
+        int maxPadding = 4;
+        int midPlatformChance = 10;
+
+        List<Platform> upperPlatformList = new List<Platform> ();
+        List<Platform> lowerPlatformList = new List<Platform> ();
+        upperPlatformList.Add (GenerateAPlatform (horizontalPos [0], verticalPos [0], 0, null));
+        lowerPlatformList.Add (GenerateAPlatform (horizontalPos [1], verticalPos [1], 0, null));
+        while (horizontalPos [0] < chunk.lenght || horizontalPos [1] < chunk.lenght) {
+
+            int upperPadding = Random.Range (minPadding, maxPadding);
+            int lowerPadding = Random.Range (minPadding, maxPadding);
+            int upperVertical = verticalPos [0] + Random.Range (-2, 3);
+            int lowerVertical = verticalPos [1] + Random.Range (-2, 3);
+
+            int midplat = Random.Range (0, 100);
+
+            if (midplat < midPlatformChance) {
+                Platform upper = GenerateAPlatform (horizontalPos [0], +((upperVertical - lowerVertical) / 2), upperPadding, null);
+                verticalPos [0] = upperVertical;
+                horizontalPos [0] = upper.origo.x + upper.length;
+                chunk.platforms.Add (upper);
+                TileFunctions.PlaceTiles (upper.length, tilemap, PlatformMaterial, upper.origo, Vector2Int.right);
             }
-            else if (verticalDiffUp < -15) {
-                int diff = Random.Range (1, 3);
-                lastPosUp += new Vector2Int (0, diff);
-                verticalDiffUp += diff;
+
+            if (upperVertical > 8) {
+                upperVertical = 8;
             }
-            else {
-                int diff = Random.Range (-2, 3);
-                lastPosUp += new Vector2Int (0, diff);
-                verticalDiffUp += diff;
+            else if (upperVertical < 4) {
+                upperVertical = 4;
             }
-            TileFunctions.PlaceTiles (lastLenghtUp, tilemap, Ground2, lastPosUp, Vector2Int.right);
-            int padd = Random.Range (platformPadding, platformPadding + 2);
-            lastPosUp += new Vector2Int (lastLenghtUp + padd, 0);
+            if (lowerVertical > 2) {
+                lowerVertical = 2;
+            }
+            else if (lowerVertical < -2) {
+                lowerVertical = -2;
+            }
+
+            if (horizontalPos [0] < chunk.lenght) {
+                Platform upper = GenerateAPlatform (horizontalPos [0], upperVertical, upperPadding, upperPlatformList.Last ());
+                verticalPos [0] = upperVertical;
+                horizontalPos [0] = upper.origo.x + upper.length;
+                upperPlatformList.Add (upper);
+                chunk.platforms.Add (upper);
+                TileFunctions.PlaceTiles (upper.length, tilemap, PlatformMaterial, upper.origo, Vector2Int.right);
+            }
+            if (horizontalPos [1] < chunk.lenght) {
+                Platform lower = GenerateAPlatform (horizontalPos [1], lowerVertical, lowerPadding, lowerPlatformList.Last ());
+                verticalPos [1] = lowerVertical;
+                horizontalPos [1] = lower.origo.x + lower.length;
+                lowerPlatformList.Add (lower);
+                chunk.platforms.Add (lower);
+                TileFunctions.PlaceTiles (lower.length, tilemap, PlatformMaterial, lower.origo, Vector2Int.right);
+            }
         }
 
-        while (lasPosDown.x + lastLenghtDown - chunk.origo.x < chunk.lenght) {
-            lastLenghtDown = Random.Range (deflenght, deflenght + platformDiff);
-            if (verticalDiffDown > 15) {
-                int diff = Random.Range (-3, -2);
-                lasPosDown += new Vector2Int (0, diff);
-                verticalDiffDown += diff;
-            }
-            else if (verticalDiffDown < -15) {
-                int diff = Random.Range (1, 3);
-                lasPosDown += new Vector2Int (0, diff);
-                verticalDiffDown += diff;
-            }
-            else {
-                int diff = Random.Range (-2, 3);
-                lasPosDown += new Vector2Int (0, diff);
-                verticalDiffDown += diff;
-            }
-            TileFunctions.PlaceTiles (lastLenghtDown, tilemap, Ground2, lasPosDown, Vector2Int.right);
-            int padd = Random.Range (platformPadding, platformPadding + 2);
-            lasPosDown += new Vector2Int (lastLenghtDown + padd, 0);
+    }
+
+    private Platform GenerateAPlatform (int horizontalPos, int verticalPos, int padding, Platform previous) {
+        return new Platform (new Vector2Int (horizontalPos + padding, verticalPos), Random.Range (1, 6), previous);
+    }
+
+
+    private void GenerateRoom (int id, Chunk chunk) {
+        if (id == 0) {
+            TileFunctions.PlaceTiles (16, tilemap, PlatformMaterial, new Vector2Int (0, 21) + chunk.origo, Vector2Int.right);
+            TileFunctions.PlaceTiles (16, tilemap, PlatformMaterial, new Vector2Int (0, 20) + chunk.origo, Vector2Int.right);
+            TileFunctions.PlaceTiles (7, tilemap, PlatformMaterial, new Vector2Int (3, 15) + chunk.origo, Vector2Int.right);
+            TileFunctions.PlaceTiles (1, tilemap, PlatformMaterial, new Vector2Int (0, 13) + chunk.origo, Vector2Int.right);
+            TileFunctions.PlaceTiles (2, tilemap, PlatformMaterial, new Vector2Int (15, 14) + chunk.origo, Vector2Int.right);
+            TileFunctions.PlaceTiles (4, tilemap, PlatformMaterial, new Vector2Int (0, 11) + chunk.origo, Vector2Int.right);
+            TileFunctions.PlaceTiles (3, tilemap, PlatformMaterial, new Vector2Int (9, 10) + chunk.origo, Vector2Int.right);
+            TileFunctions.PlaceTiles (1, tilemap, PlatformMaterial, new Vector2Int (16, 9) + chunk.origo, Vector2Int.right);
+            TileFunctions.PlaceTiles (4, tilemap, PlatformMaterial, new Vector2Int (0, 6) + chunk.origo, Vector2Int.right);
+            TileFunctions.PlaceTiles (1, tilemap, PlatformMaterial, new Vector2Int (14, 6) + chunk.origo, Vector2Int.right);
+            TileFunctions.PlaceTiles (5, tilemap, PlatformMaterial, new Vector2Int (0, 5) + chunk.origo, Vector2Int.right);
+            TileFunctions.PlaceTiles (4, tilemap, PlatformMaterial, new Vector2Int (12, 5) + chunk.origo, Vector2Int.right);
+            TileFunctions.PlaceTiles (16, tilemap, PlatformMaterial, new Vector2Int (0, 4) + chunk.origo, Vector2Int.right);
+            TileFunctions.PlaceTiles (14, tilemap, PlatformMaterial, new Vector2Int (2, 3) + chunk.origo, Vector2Int.right);
+            TileFunctions.PlaceTiles (10, tilemap, PlatformMaterial, new Vector2Int (4, 2) + chunk.origo, Vector2Int.right);
+            TileFunctions.PlaceTiles (4, tilemap, PlatformMaterial, new Vector2Int (10, 1) + chunk.origo, Vector2Int.right);
+        }
+        else if (id == 1) {
+            TileFunctions.PlaceTiles (16, tilemap, PlatformMaterial, new Vector2Int (0, 21) + chunk.origo, Vector2Int.right);
+            TileFunctions.PlaceTiles (16, tilemap, PlatformMaterial, new Vector2Int (0, 20) + chunk.origo, Vector2Int.right);
+            TileFunctions.PlaceTiles (3, tilemap, PlatformMaterial, new Vector2Int (11, 15) + chunk.origo, Vector2Int.right);
+            TileFunctions.PlaceTiles (2, tilemap, PlatformMaterial, new Vector2Int (5, 14) + chunk.origo, Vector2Int.right);
+            TileFunctions.PlaceTiles (1, tilemap, PlatformMaterial, new Vector2Int (10, 14) + chunk.origo, Vector2Int.right);
+            TileFunctions.PlaceTiles (3, tilemap, PlatformMaterial, new Vector2Int (4, 13) + chunk.origo, Vector2Int.right);
+            TileFunctions.PlaceTiles (2, tilemap, PlatformMaterial, new Vector2Int (1, 10) + chunk.origo, Vector2Int.right);
+            TileFunctions.PlaceTiles (3, tilemap, PlatformMaterial, new Vector2Int (1, 9) + chunk.origo, Vector2Int.right);
+            TileFunctions.PlaceTiles (4, tilemap, PlatformMaterial, new Vector2Int (1, 8) + chunk.origo, Vector2Int.right);
+            TileFunctions.PlaceTiles (5, tilemap, PlatformMaterial, new Vector2Int (1, 7) + chunk.origo, Vector2Int.right);
+
+            TileFunctions.PlaceTiles (3, tilemap, PlatformMaterial, new Vector2Int (11, 8) + chunk.origo, Vector2Int.right);
+            TileFunctions.PlaceTiles (4, tilemap, PlatformMaterial, new Vector2Int (10, 7) + chunk.origo, Vector2Int.right);
+            TileFunctions.PlaceTiles (5, tilemap, PlatformMaterial, new Vector2Int (9, 6) + chunk.origo, Vector2Int.right);
+            TileFunctions.PlaceTiles (5, tilemap, PlatformMaterial, new Vector2Int (8, 5) + chunk.origo, Vector2Int.right);
+
+            TileFunctions.PlaceTiles (1, tilemap, PlatformMaterial, new Vector2Int (5, 3) + chunk.origo, Vector2Int.right);
+            TileFunctions.PlaceTiles (6, tilemap, PlatformMaterial, new Vector2Int (0, 2) + chunk.origo, Vector2Int.right);
+            TileFunctions.PlaceTiles (3, tilemap, PlatformMaterial, new Vector2Int (7, 2) + chunk.origo, Vector2Int.right);
+            TileFunctions.PlaceTiles (2, tilemap, PlatformMaterial, new Vector2Int (14, 2) + chunk.origo, Vector2Int.right);
+            TileFunctions.PlaceTiles (6, tilemap, PlatformMaterial, new Vector2Int (0, 1) + chunk.origo, Vector2Int.right);
+            TileFunctions.PlaceTiles (3, tilemap, PlatformMaterial, new Vector2Int (7, 1) + chunk.origo, Vector2Int.right);
+            TileFunctions.PlaceTiles (2, tilemap, PlatformMaterial, new Vector2Int (14, 1) + chunk.origo, Vector2Int.right);
+            TileFunctions.PlaceTiles (4, tilemap, PlatformMaterial, new Vector2Int (1, 0) + chunk.origo, Vector2Int.right);
+            TileFunctions.PlaceTiles (7, tilemap, PlatformMaterial, new Vector2Int (8, 0) + chunk.origo, Vector2Int.right);
+
+        }
+        else if (id == 2) {
+            TileFunctions.PlaceTiles (16, tilemap, PlatformMaterial, new Vector2Int (0, 21) + chunk.origo, Vector2Int.right);
+            TileFunctions.PlaceTiles (16, tilemap, PlatformMaterial, new Vector2Int (0, 20) + chunk.origo, Vector2Int.right);
+            TileFunctions.PlaceTiles (3, tilemap, PlatformMaterial, new Vector2Int (0, 19) + chunk.origo, Vector2Int.right);
+            TileFunctions.PlaceTiles (3, tilemap, PlatformMaterial, new Vector2Int (9, 19) + chunk.origo, Vector2Int.right);
+            TileFunctions.PlaceTiles (2, tilemap, PlatformMaterial, new Vector2Int (14, 19) + chunk.origo, Vector2Int.right);
+            TileFunctions.PlaceTiles (1, tilemap, PlatformMaterial, new Vector2Int (0, 18) + chunk.origo, Vector2Int.right);
+            TileFunctions.PlaceTiles (2, tilemap, PlatformMaterial, new Vector2Int (9, 18) + chunk.origo, Vector2Int.right);
+            TileFunctions.PlaceTiles (1, tilemap, PlatformMaterial, new Vector2Int (15, 18) + chunk.origo, Vector2Int.right);
+
+            TileFunctions.PlaceTiles (1, tilemap, PlatformMaterial, new Vector2Int (0, 14) + chunk.origo, Vector2Int.right);
+            TileFunctions.PlaceTiles (2, tilemap, PlatformMaterial, new Vector2Int (4, 14) + chunk.origo, Vector2Int.right);
+            TileFunctions.PlaceTiles (2, tilemap, PlatformMaterial, new Vector2Int (9, 14) + chunk.origo, Vector2Int.right);
+            TileFunctions.PlaceTiles (3, tilemap, PlatformMaterial, new Vector2Int (9, 13) + chunk.origo, Vector2Int.right);
+            TileFunctions.PlaceTiles (5, tilemap, PlatformMaterial, new Vector2Int (8, 12) + chunk.origo, Vector2Int.right);
+            TileFunctions.PlaceTiles (6, tilemap, PlatformMaterial, new Vector2Int (7, 11) + chunk.origo, Vector2Int.right);
+            TileFunctions.PlaceTiles (1, tilemap, PlatformMaterial, new Vector2Int (0, 10) + chunk.origo, Vector2Int.right);
+            TileFunctions.PlaceTiles (5, tilemap, PlatformMaterial, new Vector2Int (0, 9) + chunk.origo, Vector2Int.right);
+            TileFunctions.PlaceTiles (4, tilemap, PlatformMaterial, new Vector2Int (0, 8) + chunk.origo, Vector2Int.right);
+            TileFunctions.PlaceTiles (3, tilemap, PlatformMaterial, new Vector2Int (0, 7) + chunk.origo, Vector2Int.right);
+            TileFunctions.PlaceTiles (5, tilemap, PlatformMaterial, new Vector2Int (9, 10) + chunk.origo, Vector2Int.right);
+            TileFunctions.PlaceTiles (2, tilemap, PlatformMaterial, new Vector2Int (9, 9) + chunk.origo, Vector2Int.right);
+            TileFunctions.PlaceTiles (2, tilemap, PlatformMaterial, new Vector2Int (9, 8) + chunk.origo, Vector2Int.right);
+            TileFunctions.PlaceTiles (2, tilemap, PlatformMaterial, new Vector2Int (9, 7) + chunk.origo, Vector2Int.right);
+            TileFunctions.PlaceTiles (9, tilemap, PlatformMaterial, new Vector2Int (7, 6) + chunk.origo, Vector2Int.right);
+            TileFunctions.PlaceTiles (6, tilemap, PlatformMaterial, new Vector2Int (9, 6) + chunk.origo, Vector2Int.right);
+            TileFunctions.PlaceTiles (5, tilemap, PlatformMaterial, new Vector2Int (9, 5) + chunk.origo, Vector2Int.right);
+            TileFunctions.PlaceTiles (7, tilemap, PlatformMaterial, new Vector2Int (6, 4) + chunk.origo, Vector2Int.right);
+            TileFunctions.PlaceTiles (6, tilemap, PlatformMaterial, new Vector2Int (7, 3) + chunk.origo, Vector2Int.right);
+            TileFunctions.PlaceTiles (4, tilemap, PlatformMaterial, new Vector2Int (8, 2) + chunk.origo, Vector2Int.right);
+            TileFunctions.PlaceTiles (2, tilemap, PlatformMaterial, new Vector2Int (9, 1) + chunk.origo, Vector2Int.right);
+
+            TileFunctions.PlaceTiles (2, tilemap, PlatformMaterial, new Vector2Int (0, 3) + chunk.origo, Vector2Int.right);
+            TileFunctions.PlaceTiles (2, tilemap, PlatformMaterial, new Vector2Int (0, 2) + chunk.origo, Vector2Int.right);
+            TileFunctions.PlaceTiles (1, tilemap, PlatformMaterial, new Vector2Int (0, 1) + chunk.origo, Vector2Int.right);
+
         }
     }
 
