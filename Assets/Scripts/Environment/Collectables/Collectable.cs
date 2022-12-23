@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class Collectable : Collidable
-{
-    [SerializeField] protected int id;
+{    
     protected bool collected;
     [SerializeField]
     private AudioClip collectedSound;
@@ -27,8 +26,5 @@ public abstract class Collectable : Collidable
     public void SetStarCollider(BoxCollider2D boxCollider)
     {
         base.SetCollider(boxCollider);
-    }
-
-    public virtual string GetId() { return ""; }
-    public virtual void OnLoadInit() { }
+    }     
 }

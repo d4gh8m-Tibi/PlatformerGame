@@ -4,6 +4,7 @@ using UnityEngine;
 
 public abstract class Collidable : MonoBehaviour
 {
+    [SerializeField] protected int id;
     public ContactFilter2D filter;
     private BoxCollider2D boxCollider;
     private Collider2D[] hits = new Collider2D[10];
@@ -34,4 +35,7 @@ public abstract class Collidable : MonoBehaviour
     {
         this.boxCollider = boxCollider;
     }
+
+    public abstract void OnLoadInit();
+    public abstract string GetId();
 }

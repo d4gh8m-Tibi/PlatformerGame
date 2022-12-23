@@ -5,10 +5,8 @@ using UnityEngine;
 public class MenuData : MonoBehaviour
 {
     public static MenuData instance;
-    public bool FromLoad;
-
     private PlayerData data;
-    
+    public bool FromLoad;
 
     private void Awake()
     {
@@ -27,6 +25,4 @@ public class MenuData : MonoBehaviour
     {
         return data;
     }   
-
-
 }
