@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['origo_0',['origo',['../class_chunk.html#a363c06afaa552f5f71a86e32a2eb6170',1,'Chunk']]]
+  ['lastpointorder_0',['lastPointOrder',['../class_enemy.html#a2a21287fcd290d3a2f64c8797d451278',1,'Enemy']]]
 ];

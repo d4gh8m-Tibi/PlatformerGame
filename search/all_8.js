@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['id_0',['id',['../class_collectable.html#a5d28fc799f1d0018a59bbb3cd1d75504',1,'Collectable']]],
+  ['id_0',['id',['../class_collidable.html#af09ef636639867954183d7bb840e1dd4',1,'Collidable']]],
   ['idle_1',['Idle',['../_player_action_8cs.html#aea132397c26cad8f8637a9422260decaae599161956d626eda4cb0a5ffb85271c',1,'PlayerAction.cs']]],
   ['incrementstars_2',['IncrementStars',['../class_player.html#aa5235df232e664d09ed7cb028314cb0e',1,'Player']]],
   ['instance_3',['Instance',['../class_player_input.html#a4223b0260579f032d5f4c5205d35fd9b',1,'PlayerInput']]],

@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['id_0',['id',['../class_collectable.html#a5d28fc799f1d0018a59bbb3cd1d75504',1,'Collectable']]],
-  ['instance_1',['instance',['../class_game_controller.html#a47a1897c0b58d1ba2f424f1b83cb7bfb',1,'GameController.instance()'],['../class_item_manager.html#a7e15c99752dacf87d502c8598a1e73c0',1,'ItemManager.instance()'],['../class_menu_data.html#a91d328baaa1990d9b5567dc43a74cb8a',1,'MenuData.instance()'],['../class_player.html#ab6f37ee8efe0ca124019749ad8aa4587',1,'Player.instance()'],['../class_map_generation.html#a02cb020d2d080786e157f18d6d100452',1,'MapGeneration.instance()']]]
+  ['gamecontroller_0',['gameController',['../class_collidable.html#a3d3e3113885eea89228376825e58aae5',1,'Collidable']]],
+  ['gamespeed_1',['GAMESPEED',['../class_constants_1_1_game.html#a7a566aa708ccce2b3e46de64e726a7e8',1,'Constants::Game']]],
+  ['gamespeedstopped_2',['GAMESPEEDSTOPPED',['../class_constants_1_1_game.html#ac071f91488ddb1e1fb1b3588f8c0767b',1,'Constants::Game']]]
 ];

@@ -6,6 +6,7 @@ var hierarchy =
     [ "Constants.Game", "class_constants_1_1_game.html", null ],
     [ "MonoBehaviour", null, [
       [ "CameraController", "class_camera_controller.html", null ],
+      [ "CirclePoint", "class_circle_point.html", null ],
       [ "Collidable", "class_collidable.html", [
         [ "Collectable", "class_collectable.html", [
           [ "MapTrigger", "class_map_trigger.html", [
@@ -14,6 +15,9 @@ var hierarchy =
             [ "EndMapGoal", "class_end_map_goal.html", null ]
           ] ],
           [ "Star", "class_star.html", null ]
+        ] ],
+        [ "Enemy", "class_enemy.html", [
+          [ "Walker", "class_walker.html", null ]
         ] ]
       ] ],
       [ "GameController", "class_game_controller.html", null ],

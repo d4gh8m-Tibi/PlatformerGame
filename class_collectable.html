@@ -116,10 +116,11 @@ Inheritance diagram for Collectable:</div>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a8c8850a54705271c41302d59262a249c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_collectable.html#a8c8850a54705271c41302d59262a249c">SetStarCollider</a> (BoxCollider2D boxCollider)</td></tr>
 <tr class="separator:a8c8850a54705271c41302d59262a249c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac46b52833ecf0f8c3112562e5a4a6f0f"><td class="memItemLeft" align="right" valign="top">virtual string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_collectable.html#ac46b52833ecf0f8c3112562e5a4a6f0f">GetId</a> ()</td></tr>
-<tr class="separator:ac46b52833ecf0f8c3112562e5a4a6f0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae684ed67855bfa6574d58c320ff0ef52"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_collectable.html#ae684ed67855bfa6574d58c320ff0ef52">OnLoadInit</a> ()</td></tr>
-<tr class="separator:ae684ed67855bfa6574d58c320ff0ef52"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_class_collidable"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_collidable')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_collidable.html">Collidable</a></td></tr>
+<tr class="memitem:ab7c3458c1af3f8e6852f39e220bd5206 inherit pub_methods_class_collidable"><td class="memItemLeft" align="right" valign="top">abstract void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_collidable.html#ab7c3458c1af3f8e6852f39e220bd5206">OnLoadInit</a> ()</td></tr>
+<tr class="separator:ab7c3458c1af3f8e6852f39e220bd5206 inherit pub_methods_class_collidable"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d5976224237931fc6ee9dddb4e9cb14 inherit pub_methods_class_collidable"><td class="memItemLeft" align="right" valign="top">abstract string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_collidable.html#a4d5976224237931fc6ee9dddb4e9cb14">GetId</a> ()</td></tr>
+<tr class="separator:a4d5976224237931fc6ee9dddb4e9cb14 inherit pub_methods_class_collidable"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
@@ -139,11 +140,11 @@ Protected Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
-<tr class="memitem:a5d28fc799f1d0018a59bbb3cd1d75504"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_collectable.html#a5d28fc799f1d0018a59bbb3cd1d75504">id</a></td></tr>
-<tr class="separator:a5d28fc799f1d0018a59bbb3cd1d75504"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ade015624b0cb92ce277d1e2aed583326"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_collectable.html#ade015624b0cb92ce277d1e2aed583326">collected</a></td></tr>
 <tr class="separator:ade015624b0cb92ce277d1e2aed583326"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_attribs_class_collidable"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_class_collidable')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="class_collidable.html">Collidable</a></td></tr>
+<tr class="memitem:af09ef636639867954183d7bb840e1dd4 inherit pro_attribs_class_collidable"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_collidable.html#af09ef636639867954183d7bb840e1dd4">id</a></td></tr>
+<tr class="separator:af09ef636639867954183d7bb840e1dd4 inherit pro_attribs_class_collidable"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3d3e3113885eea89228376825e58aae5 inherit pro_attribs_class_collidable"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_game_controller.html">GameController</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_collidable.html#a3d3e3113885eea89228376825e58aae5">gameController</a></td></tr>
 <tr class="separator:a3d3e3113885eea89228376825e58aae5 inherit pro_attribs_class_collidable"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -154,33 +155,6 @@ Additional Inherited Members</h2></td></tr>
 <tr class="separator:aff7bc275d05e36350766cd764189adee inherit pub_attribs_class_collidable"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="ac46b52833ecf0f8c3112562e5a4a6f0f" name="ac46b52833ecf0f8c3112562e5a4a6f0f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac46b52833ecf0f8c3112562e5a4a6f0f">&#9670;&#160;</a></span>GetId()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">virtual string Collectable.GetId </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Reimplemented in <a class="el" href="class_star.html#af1875b15685c3d6da85af40876c8191f">Star</a>, <a class="el" href="class_check_point.html#ad6e97bbc4a2d9cb76afd5efc336ee02c">CheckPoint</a>, and <a class="el" href="class_death_zone.html#a2bfc255b4b9a5672d0795da411c678c7">DeathZone</a>.</p>
-
-</div>
-</div>
 <a id="a4112d78461e91451e24d48b7ee2c9a20" name="a4112d78461e91451e24d48b7ee2c9a20"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4112d78461e91451e24d48b7ee2c9a20">&#9670;&#160;</a></span>OnCollect()</h2>
 
@@ -236,33 +210,6 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a id="ae684ed67855bfa6574d58c320ff0ef52" name="ae684ed67855bfa6574d58c320ff0ef52"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae684ed67855bfa6574d58c320ff0ef52">&#9670;&#160;</a></span>OnLoadInit()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">virtual void Collectable.OnLoadInit </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Reimplemented in <a class="el" href="class_star.html#a8cf6d014934961149b0c66a258ae498c">Star</a>, and <a class="el" href="class_check_point.html#ae8d2203ae94d5d0e55ee543d797db05a">CheckPoint</a>.</p>
-
-</div>
-</div>
 <a id="a8c8850a54705271c41302d59262a249c" name="a8c8850a54705271c41302d59262a249c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8c8850a54705271c41302d59262a249c">&#9670;&#160;</a></span>SetStarCollider()</h2>
 
@@ -304,28 +251,6 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a id="a5d28fc799f1d0018a59bbb3cd1d75504" name="a5d28fc799f1d0018a59bbb3cd1d75504"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5d28fc799f1d0018a59bbb3cd1d75504">&#9670;&#160;</a></span>id</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">int Collectable.id</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>Assets/Scripts/Environment/Collectables/<a class="el" href="_collectable_8cs.html">Collectable.cs</a></li>
 </ul>
@@ -335,7 +260,7 @@ Additional Inherited Members</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_collectable.html">Collectable</a></li>
-    <li class="footer">Generated on Fri Dec 23 2022 10:00:28 for PlatformerGame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
+    <li class="footer">Generated on Fri Dec 23 2022 11:37:27 for PlatformerGame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
   </ul>
 </div>
 </body>

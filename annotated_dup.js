@@ -4,11 +4,13 @@ var annotated_dup =
     [ "CameraController", "class_camera_controller.html", null ],
     [ "CheckPoint", "class_check_point.html", "class_check_point" ],
     [ "Chunk", "class_chunk.html", "class_chunk" ],
+    [ "CirclePoint", "class_circle_point.html", "class_circle_point" ],
     [ "Collectable", "class_collectable.html", "class_collectable" ],
     [ "Collidable", "class_collidable.html", "class_collidable" ],
     [ "Constants", "class_constants.html", "class_constants" ],
     [ "DeathZone", "class_death_zone.html", "class_death_zone" ],
     [ "EndMapGoal", "class_end_map_goal.html", "class_end_map_goal" ],
+    [ "Enemy", "class_enemy.html", "class_enemy" ],
     [ "GameController", "class_game_controller.html", "class_game_controller" ],
     [ "ItemManager", "class_item_manager.html", "class_item_manager" ],
     [ "MainMenu", "class_main_menu.html", "class_main_menu" ],
@@ -19,5 +21,6 @@ var annotated_dup =
     [ "PlayerData", "class_player_data.html", "class_player_data" ],
     [ "PlayerInput", "class_player_input.html", "class_player_input" ],
     [ "SaveController", "class_save_controller.html", "class_save_controller" ],
-    [ "Star", "class_star.html", "class_star" ]
+    [ "Star", "class_star.html", "class_star" ],
+    [ "Walker", "class_walker.html", "class_walker" ]
 ];

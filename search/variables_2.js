@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['gamecontroller_0',['gameController',['../class_collidable.html#a3d3e3113885eea89228376825e58aae5',1,'Collidable']]],
-  ['gamespeed_1',['GAMESPEED',['../class_constants_1_1_game.html#a7a566aa708ccce2b3e46de64e726a7e8',1,'Constants::Game']]],
-  ['gamespeedstopped_2',['GAMESPEEDSTOPPED',['../class_constants_1_1_game.html#ac071f91488ddb1e1fb1b3588f8c0767b',1,'Constants::Game']]]
+  ['filter_0',['filter',['../class_collidable.html#aff7bc275d05e36350766cd764189adee',1,'Collidable']]],
+  ['fromload_1',['FromLoad',['../class_menu_data.html#a7356480f04a030539061141155545a48',1,'MenuData']]]
 ];
