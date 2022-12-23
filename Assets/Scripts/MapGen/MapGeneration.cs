@@ -25,6 +25,8 @@ public class MapGeneration : MonoBehaviour
     [SerializeField] private GameObject deathzone;
 
 
+    [SerializeField] private GameObject player;
+    private Vector3 playerStartPos;
     public void Awake () {
         instance = this;
     }
@@ -33,16 +35,14 @@ public class MapGeneration : MonoBehaviour
         GameController.instance.SetMapInstance ();
         GenerateLayout ();
         Random.InitState ((int) System.DateTime.Now.Ticks);
-        deathzone.transform.localScale = new Vector3 (100, 1, 1);
+        deathzone.transform.localScale = new Vector3 (pathLength * 60, 1, 1);
+        playerStartPos = player.transform.position;
     }
 
     public Vector3 GetCheckPointPositionById (string id) {
-        Vector3 startBase = new Vector3 (0, 2, 0);
+        Vector3 startBase = playerStartPos;
         if (!checkPoints.Any ()) {
             return startBase;
-        }
-        foreach (var item in checkPoints) {
-            Debug.Log (item.GetId ());
         }
         CheckPoint checkPoint = checkPoints.FirstOrDefault (i => i.GetId ().Equals (id));
 
@@ -61,14 +61,13 @@ public class MapGeneration : MonoBehaviour
         }
     }
 
-
     private void GeneratePath () {
         Chunk start = new Chunk (Origo, ChunkType.start, 10);
         chunkMap.Add (start);
         GenerateStart (start);
         Chunk nwChunk;
         for (int i = 0; i < pathLength; i++) {
-            ChunkType type = (ChunkType) Random.Range (2, 3);
+            ChunkType type = (ChunkType) Random.Range (2, 4);
             int size;
             switch (type) {
                 case ChunkType.start:
@@ -114,7 +113,6 @@ public class MapGeneration : MonoBehaviour
     }
 
     private void GenerateTwoLayer (Chunk chunk) {
-        Debug.Log ("asd");
         int vertoffset = 12;
         int [] verticalPos = new int [2] { chunk.origo.y + vertoffset, chunk.origo.y };
         int [] horizontalPos = new int [2] { chunk.origo.x, chunk.origo.x };
