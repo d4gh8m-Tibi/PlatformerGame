@@ -9,6 +9,7 @@ public class PlayerData
     public string[] Items { get; private set; }
     public string Spawn { get; private set; }
     public int[] Enemies { get; private set; }
+    public bool PoweredUp { get; private set; }
 
     public PlayerData(Player player, GameController gameController, ItemManager itemManager)
     {
@@ -20,5 +21,7 @@ public class PlayerData
         {
             Items[i] = itemManager.ElementAt(i);
         }
+
+        PoweredUp = player.IsPoweredUp;
     }
 }

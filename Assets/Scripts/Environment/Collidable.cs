@@ -18,6 +18,7 @@ public abstract class Collidable : MonoBehaviour
 
     protected virtual void Update()
     {
+        if(hits == null) hits = new Collider2D[10]; ;
         boxCollider.OverlapCollider(filter, hits);
         for(int i = 0; i < hits.Length; ++i)
         {
@@ -38,4 +39,8 @@ public abstract class Collidable : MonoBehaviour
 
     public abstract void OnLoadInit();
     public abstract string GetId();
+
+    public virtual void SetId (int id) {
+        this.id = id;
+    }
 }

@@ -19,8 +19,10 @@ public class MapGeneration : MonoBehaviour
     [SerializeField] private int pathLength = 15;
     private List<Chunk> chunkMap = new List<Chunk> ();
 
+    [SerializeField] private CheckPoint checkPointPrefab;
+    [SerializeField] private GameObject chParent; 
     [SerializeField] private List<CheckPoint> checkPoints = new List<CheckPoint> ();
-
+    [SerializeField] private GameObject deathzone;
 
 
     public void Awake () {
@@ -30,6 +32,8 @@ public class MapGeneration : MonoBehaviour
     void Start () {
         GameController.instance.SetMapInstance ();
         GenerateLayout ();
+        Random.InitState ((int) System.DateTime.Now.Ticks);
+        deathzone.transform.localScale = new Vector3 (100, 1, 1);
     }
 
     public Vector3 GetCheckPointPositionById (string id) {
@@ -37,8 +41,11 @@ public class MapGeneration : MonoBehaviour
         if (!checkPoints.Any ()) {
             return startBase;
         }
-
+        foreach (var item in checkPoints) {
+            Debug.Log (item.GetId ());
+        }
         CheckPoint checkPoint = checkPoints.FirstOrDefault (i => i.GetId ().Equals (id));
+
         if (checkPoint == null) {
             return startBase;
         }
@@ -56,14 +63,16 @@ public class MapGeneration : MonoBehaviour
 
 
     private void GeneratePath () {
-        chunkMap.Add (new Chunk (Origo, ChunkType.start, 10));
+        Chunk start = new Chunk (Origo, ChunkType.start, 10);
+        chunkMap.Add (start);
+        GenerateStart (start);
         Chunk nwChunk;
         for (int i = 0; i < pathLength; i++) {
-            ChunkType type = ChunkType.room;//(ChunkType) Random.Range (2, 4);
+            ChunkType type = (ChunkType) Random.Range (2, 3);
             int size;
             switch (type) {
                 case ChunkType.start:
-                size = 5;
+                size = 10;
                 break;
                 case ChunkType.end:
                 size = 10;
@@ -72,16 +81,17 @@ public class MapGeneration : MonoBehaviour
                 size = 16;
                 break;
                 case ChunkType.twoLayer:
-                size = 300;
+                size = 60;
                 break;
                 default:
                 size = 0;
                 break;
             }
-            nwChunk = new Chunk (chunkMap.Last().origo + Vector2Int.right * chunkMap.Last().lenght, type, size);
+            nwChunk = new Chunk (chunkMap.Last ().origo + Vector2Int.right * chunkMap.Last ().lenght, type, size);
             chunkMap.Add (nwChunk);
         }
         nwChunk = new Chunk (chunkMap.Last ().origo + Vector2Int.right * chunkMap.Last ().lenght, ChunkType.end, 10);
+
         chunkMap.Add (nwChunk);
     }
 
@@ -90,10 +100,10 @@ public class MapGeneration : MonoBehaviour
             case ChunkType.start:
             break;
             case ChunkType.end:
-            TileFunctions.PlaceTiles (10, tilemap, Ground1, chunk.origo, Vector2Int.up);
+            GenerateEnd (chunk);
             break;
             case ChunkType.room:
-            GenerateRoom (Random.Range(0,3), chunk);
+            GenerateRoom (Random.Range (0, 3), chunk);
             break;
             case ChunkType.twoLayer:
             GenerateTwoLayer (chunk);
@@ -104,17 +114,19 @@ public class MapGeneration : MonoBehaviour
     }
 
     private void GenerateTwoLayer (Chunk chunk) {
-        int [] verticalPos = new int [2] { 8, 0 };
-        int [] horizontalPos = new int [2] { 0, 0 };
+        Debug.Log ("asd");
+        int vertoffset = 12;
+        int [] verticalPos = new int [2] { chunk.origo.y + vertoffset, chunk.origo.y };
+        int [] horizontalPos = new int [2] { chunk.origo.x, chunk.origo.x };
         int minPadding = 2;
         int maxPadding = 4;
-        int midPlatformChance = 10;
-
+        int midPlatformChance = 25;
+        Debug.Log (horizontalPos [0]);
         List<Platform> upperPlatformList = new List<Platform> ();
         List<Platform> lowerPlatformList = new List<Platform> ();
         upperPlatformList.Add (GenerateAPlatform (horizontalPos [0], verticalPos [0], 0, null));
         lowerPlatformList.Add (GenerateAPlatform (horizontalPos [1], verticalPos [1], 0, null));
-        while (horizontalPos [0] < chunk.lenght || horizontalPos [1] < chunk.lenght) {
+        while (horizontalPos [0] < chunk.origo.x + chunk.lenght || horizontalPos [1] < chunk.origo.x + chunk.lenght) {
 
             int upperPadding = Random.Range (minPadding, maxPadding);
             int lowerPadding = Random.Range (minPadding, maxPadding);
@@ -124,35 +136,34 @@ public class MapGeneration : MonoBehaviour
             int midplat = Random.Range (0, 100);
 
             if (midplat < midPlatformChance) {
-                Platform upper = GenerateAPlatform (horizontalPos [0], +((upperVertical - lowerVertical) / 2), upperPadding, null);
-                verticalPos [0] = upperVertical;
-                horizontalPos [0] = upper.origo.x + upper.length;
-                chunk.platforms.Add (upper);
-                TileFunctions.PlaceTiles (upper.length, tilemap, PlatformMaterial, upper.origo, Vector2Int.right);
+                Platform middle = GenerateAPlatform (horizontalPos [0], +((upperVertical - lowerVertical) / 2), upperPadding, null);
+                chunk.platforms.Add (middle);
+                TileFunctions.PlaceTiles (middle.length, tilemap, PlatformMaterial, middle.origo, Vector2Int.right);
             }
 
-            if (upperVertical > 8) {
-                upperVertical = 8;
+            if (upperVertical > 14) {
+                upperVertical = 14;
             }
             else if (upperVertical < 4) {
                 upperVertical = 4;
             }
-            if (lowerVertical > 2) {
-                lowerVertical = 2;
+            if (lowerVertical > 8) {
+                lowerVertical = 8;
             }
-            else if (lowerVertical < -2) {
-                lowerVertical = -2;
+            else if (lowerVertical < 0) {
+                lowerVertical = 0;
             }
 
-            if (horizontalPos [0] < chunk.lenght) {
+            if (horizontalPos [0] < chunk.origo.x + chunk.lenght) {
                 Platform upper = GenerateAPlatform (horizontalPos [0], upperVertical, upperPadding, upperPlatformList.Last ());
+                Debug.Log (upper.origo);
                 verticalPos [0] = upperVertical;
                 horizontalPos [0] = upper.origo.x + upper.length;
                 upperPlatformList.Add (upper);
                 chunk.platforms.Add (upper);
                 TileFunctions.PlaceTiles (upper.length, tilemap, PlatformMaterial, upper.origo, Vector2Int.right);
             }
-            if (horizontalPos [1] < chunk.lenght) {
+            if (horizontalPos [1] < chunk.origo.x + chunk.lenght) {
                 Platform lower = GenerateAPlatform (horizontalPos [1], lowerVertical, lowerPadding, lowerPlatformList.Last ());
                 verticalPos [1] = lowerVertical;
                 horizontalPos [1] = lower.origo.x + lower.length;
@@ -168,9 +179,21 @@ public class MapGeneration : MonoBehaviour
         return new Platform (new Vector2Int (horizontalPos + padding, verticalPos), Random.Range (1, 6), previous);
     }
 
+    private void GenerateStart (Chunk chunk) {
+        TileFunctions.PlaceTiles (3, tilemap, Ground1, chunk.origo + new Vector2Int (4, 6), Vector2Int.right);
+        TileFunctions.PlaceTiles (3, tilemap, Ground1, chunk.origo + new Vector2Int (2, 5), Vector2Int.right);
+        TileFunctions.PlaceTiles (3, tilemap, Ground1, chunk.origo + new Vector2Int (0, 3), Vector2Int.right);
+        TileFunctions.PlaceTiles (10, tilemap, Ground1, chunk.origo, Vector2Int.right);
+    }
+
+    private void GenerateEnd (Chunk chunk) {
+        TileFunctions.PlaceTiles (chunk.lenght, tilemap, Ground1, chunk.origo, Vector2Int.right);
+    }
 
     private void GenerateRoom (int id, Chunk chunk) {
+        CheckPoint checkpoint = null;
         if (id == 0) {
+            checkpoint = Instantiate (checkPointPrefab, new Vector3 (chunk.origo.x+3, chunk.origo.y+7, 0), Quaternion.identity, chParent.transform);
             TileFunctions.PlaceTiles (16, tilemap, PlatformMaterial, new Vector2Int (0, 21) + chunk.origo, Vector2Int.right);
             TileFunctions.PlaceTiles (16, tilemap, PlatformMaterial, new Vector2Int (0, 20) + chunk.origo, Vector2Int.right);
             TileFunctions.PlaceTiles (7, tilemap, PlatformMaterial, new Vector2Int (3, 15) + chunk.origo, Vector2Int.right);
@@ -180,7 +203,8 @@ public class MapGeneration : MonoBehaviour
             TileFunctions.PlaceTiles (3, tilemap, PlatformMaterial, new Vector2Int (9, 10) + chunk.origo, Vector2Int.right);
             TileFunctions.PlaceTiles (1, tilemap, PlatformMaterial, new Vector2Int (16, 9) + chunk.origo, Vector2Int.right);
             TileFunctions.PlaceTiles (4, tilemap, PlatformMaterial, new Vector2Int (0, 6) + chunk.origo, Vector2Int.right);
-            TileFunctions.PlaceTiles (1, tilemap, PlatformMaterial, new Vector2Int (14, 6) + chunk.origo, Vector2Int.right);
+            TileFunctions.PlaceTiles (1, tilemap, PlatformMaterial, new Vector2Int (14, 7) + chunk.origo, Vector2Int.right);
+            TileFunctions.PlaceTiles (2, tilemap, PlatformMaterial, new Vector2Int (13, 6) + chunk.origo, Vector2Int.right);
             TileFunctions.PlaceTiles (5, tilemap, PlatformMaterial, new Vector2Int (0, 5) + chunk.origo, Vector2Int.right);
             TileFunctions.PlaceTiles (4, tilemap, PlatformMaterial, new Vector2Int (12, 5) + chunk.origo, Vector2Int.right);
             TileFunctions.PlaceTiles (16, tilemap, PlatformMaterial, new Vector2Int (0, 4) + chunk.origo, Vector2Int.right);
@@ -189,6 +213,7 @@ public class MapGeneration : MonoBehaviour
             TileFunctions.PlaceTiles (4, tilemap, PlatformMaterial, new Vector2Int (10, 1) + chunk.origo, Vector2Int.right);
         }
         else if (id == 1) {
+            checkpoint = Instantiate (checkPointPrefab, new Vector3 (chunk.origo.x + 3, chunk.origo.y + 11, 0), Quaternion.identity, chParent.transform);
             TileFunctions.PlaceTiles (16, tilemap, PlatformMaterial, new Vector2Int (0, 21) + chunk.origo, Vector2Int.right);
             TileFunctions.PlaceTiles (16, tilemap, PlatformMaterial, new Vector2Int (0, 20) + chunk.origo, Vector2Int.right);
             TileFunctions.PlaceTiles (3, tilemap, PlatformMaterial, new Vector2Int (11, 15) + chunk.origo, Vector2Int.right);
@@ -217,6 +242,7 @@ public class MapGeneration : MonoBehaviour
 
         }
         else if (id == 2) {
+            checkpoint = Instantiate (checkPointPrefab, new Vector3 (chunk.origo.x + 3, chunk.origo.y + 11, 0), Quaternion.identity, chParent.transform);
             TileFunctions.PlaceTiles (16, tilemap, PlatformMaterial, new Vector2Int (0, 21) + chunk.origo, Vector2Int.right);
             TileFunctions.PlaceTiles (16, tilemap, PlatformMaterial, new Vector2Int (0, 20) + chunk.origo, Vector2Int.right);
             TileFunctions.PlaceTiles (3, tilemap, PlatformMaterial, new Vector2Int (0, 19) + chunk.origo, Vector2Int.right);
@@ -253,9 +279,9 @@ public class MapGeneration : MonoBehaviour
             TileFunctions.PlaceTiles (1, tilemap, PlatformMaterial, new Vector2Int (0, 1) + chunk.origo, Vector2Int.right);
 
         }
-    }
-
-    private void GenerateRugged (Chunk chunk) {
-
+        
+        checkpoint.SetId (checkPoints.Count+2);
+        checkpoint.name = checkpoint.GetId();
+        checkPoints.Add (checkpoint);
     }
 }

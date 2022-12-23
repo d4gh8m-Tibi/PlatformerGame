@@ -21,6 +21,10 @@ public class Player : MonoBehaviour
     private BoxCollider2D boxCollider2D;
     private PlayerInput playerInput;
     private GameController gameController;
+
+    public bool IsPoweredUp { get; set; } = false;
+    [SerializeField] protected Bullet bulletPrefab;
+    private Vector2Int facingDirection;
     public int StarCounter { get; set; } = 0;
     
     private Animator animator;
@@ -35,6 +39,7 @@ public class Player : MonoBehaviour
         gameController = GameController.instance;
         gameController.SetPlayerInstace();
         boxCollider2D.tag = "Player";
+        facingDirection = new Vector2Int(1, 0);
     }
 
     private void Awake()
@@ -50,7 +55,12 @@ public class Player : MonoBehaviour
 
     private void ExecutePlayerInputs(List<PlayerAction> actions)
     {
-        if(actions.Contains(PlayerAction.Jump))
+        if (actions.Contains(PlayerAction.Shoot))
+        {
+            Shoot();
+            actions.Remove(PlayerAction.Shoot);
+        }
+        else if (actions.Contains(PlayerAction.Jump))
         {
             Jump();
             actions.Remove(PlayerAction.Jump);
@@ -59,8 +69,8 @@ public class Player : MonoBehaviour
         {
             Move(playerInput.HorizontalInput);
             actions.Remove(PlayerAction.Move);
-
         }
+        
         
         if(actions.Contains(PlayerAction.Menu))
         {
@@ -74,6 +84,16 @@ public class Player : MonoBehaviour
     {
         
         rigidBody.velocity = new Vector2(directionInput * movementSpeed, rigidBody.velocity.y);
+        int lastFacingDirection = facingDirection.x;
+        if(directionInput > 0)
+        {
+            lastFacingDirection = 1;
+        }
+        else if(directionInput < 0)
+        {
+            lastFacingDirection = -1;
+        }
+        facingDirection = new Vector2Int(lastFacingDirection, 0);
     }
 
     public void Jump()
@@ -83,6 +103,14 @@ public class Player : MonoBehaviour
             PlaySound(audioEffects[0]);
             GetComponent<Rigidbody2D>().velocity = new Vector3(0, jumpForce, 0);
         }
+    }
+
+    public void Shoot()
+    {
+        if (!IsPoweredUp) return;
+
+        Bullet bullet = Instantiate(bulletPrefab, transform.position,transform.rotation);
+        bullet.Init("Enemy", facingDirection, 10);
     }
 
     public void SetRigidBody(Rigidbody2D rigidbody)
@@ -141,5 +169,10 @@ public class Player : MonoBehaviour
     {
         effectSource.clip = effectClip;
         effectSource.Play();
+    }
+
+    public void RemoveBuffs()
+    {
+        IsPoweredUp = false;
     }
 }
