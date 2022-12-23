@@ -11,6 +11,8 @@ public static class Inits
         GameObject playerGameObject = new GameObject();
         player = playerGameObject.AddComponent<Player>();
         PlayerInput inputController = playerGameObject.AddComponent<PlayerInput>();
+        GameController gameController = playerGameObject.AddComponent<GameController>();
+        ItemManager itemManager = playerGameObject.AddComponent<ItemManager>();
         BoxCollider2D boxCollider2D = playerGameObject.AddComponent<BoxCollider2D>();
         Rigidbody2D rigidBody = playerGameObject.AddComponent<Rigidbody2D>();
         Animator animator = playerGameObject.AddComponent<Animator>();

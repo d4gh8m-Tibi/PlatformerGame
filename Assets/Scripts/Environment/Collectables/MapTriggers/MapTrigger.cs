@@ -19,6 +19,6 @@ public abstract class MapTrigger : Collectable
         base.SetCollider(boxCollider);
     }
 
-    protected virtual void OnTrigger() { }
+    protected abstract void OnTrigger();
  
 }
