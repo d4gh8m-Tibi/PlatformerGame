@@ -100,7 +100,8 @@ public class GameController : MonoBehaviour
     private void SpawnPlayer(PlayerData data)
     {
         player.SetPosition(GetCheckPoint(data.Spawn));
-        player.StarCounter = data.Items.Length;//shall be fixed
+        player.StarCounter = data.Items.Length;
+        player.IsPoweredUp = data.PoweredUp;
     }
 
     private void LoadMapItems(PlayerData data)
@@ -111,6 +112,7 @@ public class GameController : MonoBehaviour
 
     public void KillPlayer()
     {
+        player.RemoveBuffs();
         player.SetPosition(GetCheckPoint());
     }
 

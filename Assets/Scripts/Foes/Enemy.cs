@@ -71,6 +71,6 @@ public abstract class Enemy : Collidable
     }
 
     protected abstract void OnPlayerCollide();
-    protected abstract void OnBulletCollide();
+    public abstract void OnBulletCollide();
     protected abstract void Move();
 }
