@@ -39,4 +39,8 @@ public abstract class Collidable : MonoBehaviour
 
     public abstract void OnLoadInit();
     public abstract string GetId();
+
+    public virtual void SetId (int id) {
+        this.id = id;
+    }
 }

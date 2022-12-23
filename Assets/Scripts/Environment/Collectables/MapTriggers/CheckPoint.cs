@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CheckPoint : MapTrigger
 {   
+
     protected override void OnTrigger()
     {
         if (collected) return;
@@ -22,6 +23,8 @@ public class CheckPoint : MapTrigger
     {
         return GenerateIdString(id);
     }
+
+
 
     public static string GenerateIdString(int id)
     {
