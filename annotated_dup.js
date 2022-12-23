@@ -19,6 +19,7 @@ var annotated_dup =
     [ "MapGeneration", "class_map_generation.html", "class_map_generation" ],
     [ "MapTrigger", "class_map_trigger.html", "class_map_trigger" ],
     [ "MenuData", "class_menu_data.html", "class_menu_data" ],
+    [ "OptionsMenu", "class_options_menu.html", "class_options_menu" ],
     [ "Player", "class_player.html", "class_player" ],
     [ "PlayerData", "class_player_data.html", "class_player_data" ],
     [ "PlayerInput", "class_player_input.html", "class_player_input" ],
