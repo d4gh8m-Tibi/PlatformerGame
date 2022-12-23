@@ -52,7 +52,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "_build_script_8cs.html",
-"pages.html"
+"namespace_assets_1_1_scripts_1_1_map_gen.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

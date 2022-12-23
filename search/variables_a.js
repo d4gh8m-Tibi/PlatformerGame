@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['rigidbody_0',['rigidBody',['../class_enemy.html#af90b1d95d3ca8f21737e5149e182f3ad',1,'Enemy']]]
+  ['platforms_0',['platforms',['../class_chunk.html#a738a976077cb3dd5182fb4516ea355c4',1,'Chunk']]],
+  ['previousplatform_1',['previousPlatform',['../class_platform.html#a9c6e1da27186b92d204a9a1491efe0d8',1,'Platform']]]
 ];

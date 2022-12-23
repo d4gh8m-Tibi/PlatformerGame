@@ -9,5 +9,5 @@ var searchData=
   ['optionsmenu_6',['OptionsMenu',['../class_options_menu.html',1,'']]],
   ['optionsmenu_2ecs_7',['OptionsMenu.cs',['../_options_menu_8cs.html',1,'']]],
   ['ordernumbervalue_8',['OrderNumberValue',['../class_circle_point.html#a10e42a9ab6627de8e35004a5e081ccf8',1,'CirclePoint']]],
-  ['origo_9',['origo',['../class_chunk.html#a363c06afaa552f5f71a86e32a2eb6170',1,'Chunk']]]
+  ['origo_9',['origo',['../class_chunk.html#a363c06afaa552f5f71a86e32a2eb6170',1,'Chunk.origo()'],['../class_platform.html#a97b21d5f8f987953f6a273e3fc80a59e',1,'Platform.origo()']]]
 ];

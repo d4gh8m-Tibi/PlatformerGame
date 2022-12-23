@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['targettag_0',['targetTag',['../class_projectile.html#a1b012e1a0becee7c9edcb13d56250e9d',1,'Projectile']]],
-  ['type_1',['type',['../class_chunk.html#a5677cd99ae21588cdabf7ca20dc95fbf',1,'Chunk']]]
+  ['speed_0',['speed',['../class_projectile.html#a08b05673dcd2da844c04ad812f04b3aa',1,'Projectile.speed()'],['../class_enemy.html#ad58edec05f9a44da44ef1021a4005d06',1,'Enemy.speed()']]]
 ];

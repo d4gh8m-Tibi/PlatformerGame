@@ -34,6 +34,7 @@ var hierarchy =
       [ "Player", "class_player.html", null ],
       [ "PlayerInput", "class_player_input.html", null ]
     ] ],
+    [ "Platform", "class_platform.html", null ],
     [ "PlayerData", "class_player_data.html", null ],
     [ "SaveController", "class_save_controller.html", null ],
     [ "Constants.Scenes", "class_constants_1_1_scenes.html", null ]
