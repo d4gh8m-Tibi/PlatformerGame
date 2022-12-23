@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['move_0',['Move',['../class_player.html#a8b605a31daabc4865aa85e3443b7f5e8',1,'Player.Move()'],['../class_enemy.html#a4eea21fa0eca1bfdd15536c14ffd3ec0',1,'Enemy.Move()'],['../class_walker.html#aca7ccab6a2eeea937b858910b8d594c1',1,'Walker.Move()']]]
+  ['loaditemsonload_0',['LoadItemsOnLoad',['../class_item_manager.html#a5f0c830da32cd5f892e4f5ffa3aabd94',1,'ItemManager']]],
+  ['loadplayerdata_1',['LoadPlayerData',['../class_menu_data.html#a7c97281fd01c7b3e6fa72136223932cc',1,'MenuData']]],
+  ['loadstate_2',['LoadState',['../class_save_controller.html#a67e73179b6b7c4be9596ac15c3054503',1,'SaveController']]]
 ];

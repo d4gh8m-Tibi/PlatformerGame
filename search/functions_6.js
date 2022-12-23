@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['jump_0',['Jump',['../class_player.html#a689d6b007b09f694a246fe806bef7d5f',1,'Player']]]
+  ['incrementstars_0',['IncrementStars',['../class_player.html#aa5235df232e664d09ed7cb028314cb0e',1,'Player']]],
+  ['init_1',['Init',['../class_projectile.html#a4552515f6e473cb383aa6b73a418d0d2',1,'Projectile']]]
 ];

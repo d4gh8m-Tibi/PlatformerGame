@@ -6,5 +6,6 @@ var searchData=
   ['endmapgoal_2ecs_3',['EndMapGoal.cs',['../_end_map_goal_8cs.html',1,'']]],
   ['enemies_4',['Enemies',['../class_player_data.html#a7e341a7214115cd9dc15431cb8e060e8',1,'PlayerData']]],
   ['enemy_5',['Enemy',['../class_enemy.html',1,'']]],
-  ['enemy_2ecs_6',['Enemy.cs',['../_enemy_8cs.html',1,'']]]
+  ['enemy_2ecs_6',['Enemy.cs',['../_enemy_8cs.html',1,'']]],
+  ['enemyeffect_7',['EnemyEffect',['../class_bullet.html#aa5de9d6c5184a4055e3522bb48d25289',1,'Bullet']]]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['rigidbody_0',['rigidBody',['../class_enemy.html#af90b1d95d3ca8f21737e5149e182f3ad',1,'Enemy']]]
+  ['origo_0',['origo',['../class_chunk.html#a363c06afaa552f5f71a86e32a2eb6170',1,'Chunk']]]
 ];

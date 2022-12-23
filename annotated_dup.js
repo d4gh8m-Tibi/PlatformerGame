@@ -1,6 +1,8 @@
 var annotated_dup =
 [
     [ "BuildScript", "class_build_script.html", null ],
+    [ "Bullet", "class_bullet.html", "class_bullet" ],
+    [ "BulletSpawner", "class_bullet_spawner.html", "class_bullet_spawner" ],
     [ "CameraController", "class_camera_controller.html", null ],
     [ "CheckPoint", "class_check_point.html", "class_check_point" ],
     [ "Chunk", "class_chunk.html", "class_chunk" ],
@@ -17,10 +19,11 @@ var annotated_dup =
     [ "MapGeneration", "class_map_generation.html", "class_map_generation" ],
     [ "MapTrigger", "class_map_trigger.html", "class_map_trigger" ],
     [ "MenuData", "class_menu_data.html", "class_menu_data" ],
-    [ "OptionsMenu", "class_options_menu.html", "class_options_menu" ],
     [ "Player", "class_player.html", "class_player" ],
     [ "PlayerData", "class_player_data.html", "class_player_data" ],
     [ "PlayerInput", "class_player_input.html", "class_player_input" ],
+    [ "PowerUp", "class_power_up.html", "class_power_up" ],
+    [ "Projectile", "class_projectile.html", "class_projectile" ],
     [ "SaveController", "class_save_controller.html", "class_save_controller" ],
     [ "Star", "class_star.html", "class_star" ],
     [ "Walker", "class_walker.html", "class_walker" ]

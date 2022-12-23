@@ -92,6 +92,7 @@ $(document).ready(function(){initNavTree('class_player.html',''); initResizable(
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-attribs">Static Public Attributes</a> &#124;
+<a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="#properties">Properties</a> &#124;
 <a href="class_player-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">Player Class Reference</div></div>
@@ -110,6 +111,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a8b605a31daabc4865aa85e3443b7f5e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a689d6b007b09f694a246fe806bef7d5f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player.html#a689d6b007b09f694a246fe806bef7d5f">Jump</a> ()</td></tr>
 <tr class="separator:a689d6b007b09f694a246fe806bef7d5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aceeeea8a88642a67284dbfb1e435bd23"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player.html#aceeeea8a88642a67284dbfb1e435bd23">Shoot</a> ()</td></tr>
+<tr class="separator:aceeeea8a88642a67284dbfb1e435bd23"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4ebacd84c103be901e1a7c9c7064c961"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player.html#a4ebacd84c103be901e1a7c9c7064c961">SetRigidBody</a> (Rigidbody2D rigidbody)</td></tr>
 <tr class="separator:a4ebacd84c103be901e1a7c9c7064c961"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0a0405c4597d60dcfe99b398dc7f83b6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player.html#a0a0405c4597d60dcfe99b398dc7f83b6">SetPosition</a> (Vector3 position)</td></tr>
@@ -120,14 +123,23 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a2372a2828179360ae437209ca03de938"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa5235df232e664d09ed7cb028314cb0e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player.html#aa5235df232e664d09ed7cb028314cb0e">IncrementStars</a> ()</td></tr>
 <tr class="separator:aa5235df232e664d09ed7cb028314cb0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3447f2b12991980f5311076964247160"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player.html#a3447f2b12991980f5311076964247160">RemoveBuffs</a> ()</td></tr>
+<tr class="separator:a3447f2b12991980f5311076964247160"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
 <tr class="memitem:ab6f37ee8efe0ca124019749ad8aa4587"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_player.html">Player</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player.html#ab6f37ee8efe0ca124019749ad8aa4587">instance</a></td></tr>
 <tr class="separator:ab6f37ee8efe0ca124019749ad8aa4587"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
+Protected Attributes</h2></td></tr>
+<tr class="memitem:af49c60b188f67edd1b70931b5bf76841"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_bullet.html">Bullet</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player.html#af49c60b188f67edd1b70931b5bf76841">bulletPrefab</a></td></tr>
+<tr class="separator:af49c60b188f67edd1b70931b5bf76841"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="properties" name="properties"></a>
 Properties</h2></td></tr>
+<tr class="memitem:a9edcde78b573b7ef6a9c27816116db36"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player.html#a9edcde78b573b7ef6a9c27816116db36">IsPoweredUp</a> = false<code> [get, set]</code></td></tr>
+<tr class="separator:a9edcde78b573b7ef6a9c27816116db36"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af34128e125d60eeabf6ef7c47adb1915"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player.html#af34128e125d60eeabf6ef7c47adb1915">StarCounter</a> = 0<code> [get, set]</code></td></tr>
 <tr class="separator:af34128e125d60eeabf6ef7c47adb1915"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5243cde443d24a74dc2c4819e1d96c2a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player.html#a5243cde443d24a74dc2c4819e1d96c2a">IsGrounded</a><code> [get]</code></td></tr>
@@ -179,6 +191,23 @@ Properties</h2></td></tr>
           <td>(</td>
           <td class="paramtype">float&#160;</td>
           <td class="paramname"><em>directionInput</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3447f2b12991980f5311076964247160" name="a3447f2b12991980f5311076964247160"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3447f2b12991980f5311076964247160">&#9670;&#160;</a></span>RemoveBuffs()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Player.RemoveBuffs </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -240,6 +269,23 @@ Properties</h2></td></tr>
 
 </div>
 </div>
+<a id="aceeeea8a88642a67284dbfb1e435bd23" name="aceeeea8a88642a67284dbfb1e435bd23"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aceeeea8a88642a67284dbfb1e435bd23">&#9670;&#160;</a></span>Shoot()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Player.Shoot </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a2372a2828179360ae437209ca03de938" name="a2372a2828179360ae437209ca03de938"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2372a2828179360ae437209ca03de938">&#9670;&#160;</a></span>UpdateAnimationState()</h2>
 
@@ -258,6 +304,28 @@ Properties</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
+<a id="af49c60b188f67edd1b70931b5bf76841" name="af49c60b188f67edd1b70931b5bf76841"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af49c60b188f67edd1b70931b5bf76841">&#9670;&#160;</a></span>bulletPrefab</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_bullet.html">Bullet</a> Player.bulletPrefab</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="ab6f37ee8efe0ca124019749ad8aa4587" name="ab6f37ee8efe0ca124019749ad8aa4587"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab6f37ee8efe0ca124019749ad8aa4587">&#9670;&#160;</a></span>instance</h2>
 
@@ -303,6 +371,28 @@ Properties</h2></td></tr>
 
 </div>
 </div>
+<a id="a9edcde78b573b7ef6a9c27816116db36" name="a9edcde78b573b7ef6a9c27816116db36"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9edcde78b573b7ef6a9c27816116db36">&#9670;&#160;</a></span>IsPoweredUp</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Player.IsPoweredUp = false</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="af34128e125d60eeabf6ef7c47adb1915" name="af34128e125d60eeabf6ef7c47adb1915"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af34128e125d60eeabf6ef7c47adb1915">&#9670;&#160;</a></span>StarCounter</h2>
 
@@ -334,7 +424,7 @@ Properties</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_player.html">Player</a></li>
-    <li class="footer">Generated on Fri Dec 23 2022 12:59:59 for PlatformerGame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
+    <li class="footer">Generated on Fri Dec 23 2022 14:23:03 for PlatformerGame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
   </ul>
 </div>
 </body>
