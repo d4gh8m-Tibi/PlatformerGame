@@ -106,7 +106,8 @@ MonoBehaviour:
   jumpableGround:
     serializedVersion: 2
     m_Bits: 64
-  jumpSound: {fileID: 5356968883277237107}
+  effectSource: {fileID: 0}
+  audioEffects: []
 --- !u!50 &218324174262231229
 Rigidbody2D:
   serializedVersion: 4
@@ -123,7 +124,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 0b6000c950d8d544786def075acbf20c, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0

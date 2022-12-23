@@ -13,4 +13,9 @@ public class DeathZone : MapTrigger
     {
         return nameof(DeathZone) + "_" + id.ToString(); 
     }
+
+    public override void OnLoadInit()
+    {
+        throw new System.NotImplementedException();
+    }
 }

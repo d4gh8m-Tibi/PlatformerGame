@@ -8,4 +8,13 @@ public class EndMapGoal : MapTrigger
     {
         GameController.instance.FinishGame();
     }
+    public override void OnLoadInit()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public override string GetId()
+    {
+        throw new System.NotImplementedException();
+    }
 }
