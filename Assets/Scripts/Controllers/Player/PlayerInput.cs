@@ -44,6 +44,10 @@ public class PlayerInput : MonoBehaviour
         {
             Debug.Log("Escape key was released");
             Actions.Add(PlayerAction.Menu);
+        } 
+        else if(Input.GetKeyDown(KeyCode.K))
+        {
+            Actions.Add(PlayerAction.Shoot);
         }
     }
 }

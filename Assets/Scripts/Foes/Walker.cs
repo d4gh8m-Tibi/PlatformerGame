@@ -22,10 +22,9 @@ public class Walker : Enemy
         {
             NextCirclePoint();
         }
-
     }
 
-    protected override void OnBulletCollide()
+    public override void OnBulletCollide()
     {
         Destroy(gameObject);
     }
