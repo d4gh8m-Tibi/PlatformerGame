@@ -3867,9 +3867,29 @@ PrefabInstance:
       value: MapManager
       objectReference: {fileID: 0}
     - target: {fileID: 6469566634800437871, guid: a6e7dfb8d97a1d748afe86ca344a2101, type: 3}
+      propertyPath: Ground2
+      value: 
+      objectReference: {fileID: 11400000, guid: 61ba7be00cffceb4485a8696b422168f, type: 2}
+    - target: {fileID: 6469566634800437871, guid: a6e7dfb8d97a1d748afe86ca344a2101, type: 3}
       propertyPath: tilemap
       value: 
       objectReference: {fileID: 1000857866}
+    - target: {fileID: 6469566634800437871, guid: a6e7dfb8d97a1d748afe86ca344a2101, type: 3}
+      propertyPath: amplitude
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6469566634800437871, guid: a6e7dfb8d97a1d748afe86ca344a2101, type: 3}
+      propertyPath: frequency
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 6469566634800437871, guid: a6e7dfb8d97a1d748afe86ca344a2101, type: 3}
+      propertyPath: pathLength
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6469566634800437871, guid: a6e7dfb8d97a1d748afe86ca344a2101, type: 3}
+      propertyPath: minGoalDist
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: 6469566634800437871, guid: a6e7dfb8d97a1d748afe86ca344a2101, type: 3}
       propertyPath: checkPoints.Array.size
       value: 2
