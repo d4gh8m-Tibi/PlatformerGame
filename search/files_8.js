@@ -1,5 +1,7 @@
 var searchData=
 [
-  ['savecontroller_2ecs_0',['SaveController.cs',['../_save_controller_8cs.html',1,'']]],
-  ['star_2ecs_1',['Star.cs',['../_star_8cs.html',1,'']]]
+  ['player_2ecs_0',['Player.cs',['../_player_8cs.html',1,'']]],
+  ['playeraction_2ecs_1',['PlayerAction.cs',['../_player_action_8cs.html',1,'']]],
+  ['playerdata_2ecs_2',['PlayerData.cs',['../_player_data_8cs.html',1,'']]],
+  ['playerinput_2ecs_3',['PlayerInput.cs',['../_player_input_8cs.html',1,'']]]
 ];

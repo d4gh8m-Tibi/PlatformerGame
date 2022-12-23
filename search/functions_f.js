@@ -10,6 +10,7 @@ var searchData=
   ['setposition_7',['SetPosition',['../class_player.html#a0a0405c4597d60dcfe99b398dc7f83b6',1,'Player']]],
   ['setrigidbody_8',['SetRigidBody',['../class_player.html#a4ebacd84c103be901e1a7c9c7064c961',1,'Player.SetRigidBody()'],['../class_enemy.html#a611ba46437722a14eae93b2f68f8f136',1,'Enemy.SetRigidBody()']]],
   ['setstarcollider_9',['SetStarCollider',['../class_collectable.html#a8c8850a54705271c41302d59262a249c',1,'Collectable']]],
-  ['start_10',['Start',['../class_collidable.html#abfddd930e758f0a43705bb17381a865b',1,'Collidable.Start()'],['../class_enemy.html#ae554634f49258f07529cad477263267c',1,'Enemy.Start()']]],
-  ['startnewgame_11',['StartNewGame',['../class_main_menu.html#a3143c8f0ab3fa85c921df38ab3a4d429',1,'MainMenu']]]
+  ['setvolume_10',['SetVolume',['../class_options_menu.html#a5a60cbd02e539dbb68b88313da36c9f9',1,'OptionsMenu']]],
+  ['start_11',['Start',['../class_collidable.html#abfddd930e758f0a43705bb17381a865b',1,'Collidable.Start()'],['../class_enemy.html#ae554634f49258f07529cad477263267c',1,'Enemy.Start()']]],
+  ['startnewgame_12',['StartNewGame',['../class_main_menu.html#a3143c8f0ab3fa85c921df38ab3a4d429',1,'MainMenu']]]
 ];

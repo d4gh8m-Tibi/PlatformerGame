@@ -25,6 +25,7 @@ var hierarchy =
       [ "MainMenu", "class_main_menu.html", null ],
       [ "MapGeneration", "class_map_generation.html", null ],
       [ "MenuData", "class_menu_data.html", null ],
+      [ "OptionsMenu", "class_options_menu.html", null ],
       [ "Player", "class_player.html", null ],
       [ "PlayerInput", "class_player_input.html", null ]
     ] ],
